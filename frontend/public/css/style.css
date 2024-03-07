@@ -129,7 +129,7 @@ h6 {
 }
 .form-grou{
     
-    margin-top: 150px; 
+    margin-top: 120px; 
     display: flex!important;
     justify-content: center!important;
     flex-direction: column;
@@ -735,13 +735,16 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
     margin-bottom: 50px;
 
 }
+.form-grou{
+    padding-bottom: 50px;
+}
 .tint{
     position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity by changing the alpha value */
+  background-color: rgba(0, 0, 0, 0.664); /* Adjust the opacity by changing the alpha value */
   z-index: 1;
 }
 .card{

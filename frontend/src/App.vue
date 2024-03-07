@@ -27,7 +27,7 @@ export default {
     $route: {
             immediate: true,
             handler() {
-                document.title = 'Bike X Optium';
+                document.title = 'Bike X Optimum';
             }
         },
   }
