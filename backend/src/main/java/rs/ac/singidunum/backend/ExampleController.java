@@ -16,7 +16,7 @@ public class ExampleController {
         HashMap<String, Object> json = new HashMap<>();
         json.put("message", "Hello from Spring Boot");
         json.put("timestamp", LocalDateTime.now());
-        json.put("user", "Filip");
+        json.put("user", "b017");
         return json;
     }
 }
