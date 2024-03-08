@@ -70,6 +70,9 @@ a {
     align-items: center;
     padding-bottom: 15px ;
 }
+.lf--forgot{
+    text-align: center;
+}
 .email-text{
     margin: 10px!important;
 }
@@ -1191,7 +1194,7 @@ textarea#comment::placeholder {
 }
 
 .social_icon {
-    float: left;
+    width: 40%;
     align-items: center;
 }
 
@@ -1202,8 +1205,7 @@ textarea#comment::placeholder {
 
 .social_icon li {
     float: left;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding: 5px;
 }
 
 .copyright_section {

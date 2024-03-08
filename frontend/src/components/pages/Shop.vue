@@ -12,25 +12,31 @@
                         <table id="table" class="table table-bordered ">
                             <thead>
                                 <tr>
-                                    <th scope="col">Item</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Quantity</th>
                                     <th scope="col">Price</th>
                                 </tr>
                             </thead>
+                            <!-- <td>
+                                <tr v-for="(item, index) in cart" :key="index">
+                                    <th scope="col">{{ item.name }}</th>
+                                    <th scope="col">{{ item.price }}</th>
+                                </tr>
+                            </td> -->
                         </table>
                     </div>
                 </div>
 
             </div>
             <div id="emptyCart" bis_skin_checked="1">
-                <h2>Your shopping cart is empty!</h2>
+                <!-- <h2 v-if="cart.length === 0">Your shopping cart is empty!</h2> -->
             </div>
         </div>
+
     </div>
 </template>
 
 <script>
+
 export default {
     name: "ShopComponent"
 }

@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <Head/>
+
+    <Head />
+
     <body>
-      <Nav :navItems="navigation"/>
+      <Nav :navItems="navigation" />
       <main>
         <router-view></router-view>
 
       </main>
-      <Footer/>
+      <Footer />
     </body>
   </div>
 </template>
@@ -16,6 +18,7 @@
 import Head from "./components/Head.vue"
 import Nav from "./components/Nav.vue"
 import Footer from "./components/Footer.vue"
+
 export default {
   name: 'App',
   components: {
@@ -23,13 +26,13 @@ export default {
     Nav,
     Footer
   },
-  watch:{
+  watch: {
     $route: {
-            immediate: true,
-            handler() {
-                document.title = 'Bike X Optimum';
-            }
-        },
+      immediate: true,
+      handler() {
+        document.title = 'Bike X Optimum';
+      }
+    },
   }
   ,
   data() {
@@ -52,6 +55,7 @@ export default {
           path: "/login"
         }
       ]
+
     }
   }
 }

@@ -126,9 +126,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="read_btn_main">
-                    <div class="read_bt"><a><router-link to="/Bikes">Read More</router-link></a></div>
-                </div>
             </div>
         </div>
     </div>

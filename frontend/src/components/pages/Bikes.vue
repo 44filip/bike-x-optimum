@@ -55,100 +55,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">200</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">200</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">200</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">200</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">200</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">200</span></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
-    name: "BikesComponent"
+    name: "BikesComponent",
+    
 }
 </script>
