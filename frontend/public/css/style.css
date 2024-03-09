@@ -243,6 +243,10 @@ img {
     height: auto;
 }
 
+.col img {
+    padding: 10px;
+}
+
  :focus {
     outline: 0;
 }
