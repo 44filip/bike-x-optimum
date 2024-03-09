@@ -1,0 +1,6 @@
+Fix main page buttons and price alignment
+Implement a better way to keep store cards static sized
+Finish the Shopping Cart page and features
+Add MySQL import script to repository
+Figure out Spring Boot and connections to MySQL and Vue
+Touch up and ship to university
