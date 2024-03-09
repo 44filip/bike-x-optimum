@@ -10,11 +10,11 @@ public class Transactions {
     private int transactionId;
 
     @ManyToOne
-    @JoinColumn(name = "buyer", referencedColumnName = "user_id")
+    @JoinColumn(name = "buyer", referencedColumnName = "userId")
     private Users buyer;
 
     @ManyToOne
-    @JoinColumn(name = "product", referencedColumnName = "bike_id")
+    @JoinColumn(name = "product", referencedColumnName = "bikeId")
     private Bikes product;
 
     public int getTransactionId() {
