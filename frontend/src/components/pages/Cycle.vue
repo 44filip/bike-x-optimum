@@ -61,7 +61,7 @@
         <!-- banner section end -->
         <div class="cycle_section layout_padding">
             <div class="container">
-                <h1 class="cycle_taital">Our cycle</h1>
+                <h1 class="cycle_taital">Our cycles</h1>
                 <p class="cycle_text">It is a long established fact that a reader will be distracted. </p>
                 <div class="cycle_section_2 layout_padding">
                     <div class="row">
