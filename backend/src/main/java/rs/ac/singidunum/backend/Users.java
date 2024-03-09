@@ -11,7 +11,6 @@ public class Users {
     private String email;
     private String passwordHash;
     private double balance;
-    private String creationDate;
 
     public int getUserId() {
         return userId;
@@ -44,12 +43,5 @@ public class Users {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
+    
 }
