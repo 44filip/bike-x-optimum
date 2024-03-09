@@ -14,48 +14,57 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="card">
-                        <img src="../../../public/images/img-1.png" class="card-img-top"
-                            alt="../../../public/images/img-1.png">
+                        <img src="/images/img-1.png" class="card-img-top"
+                            alt="img-1.png">
                         <div class="card-body">
                             <h5 class="card-title">Bike 1 - Cycle</h5>
                             <div class="btn_main">
                                 <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">220</span></h4>
+                                <div>
+                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
+                                            style=" color: #325662">220</span></h4>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img src="../../../public/images/img-5.png" class="card-img-top"
-                            alt="../../../public/images/img-5.png">
+                        <img src="/images/img-5.png" class="card-img-top"
+                            alt="img-5.png">
                         <div class="card-body">
                             <h5 class="card-title">Bike 2 - Stylish</h5>
                             <div class="btn_main">
                                 <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">280</span></h4>
+                                <div>
+                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
+                                            style=" color: #325662">220</span></h4>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img src="../../../public/images/img-6.png" class="card-img-top"
-                            alt="../../../public/images/img-6.png">
+                        <img src="/images/img-6.png" class="card-img-top"
+                            alt="img-6.png">
                         <div class="card-body">
                             <h5 class="card-title">Bike 3 - Modern</h5>
                             <div class="btn_main">
                                 <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">250</span></h4>
+                                <div>
+                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
+                                            style=" color: #325662">220</span></h4>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </template>
@@ -64,6 +73,6 @@
 
 export default {
     name: "BikesComponent",
-    
+
 }
 </script>

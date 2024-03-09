@@ -77,8 +77,8 @@
                                 readable content of a page when looking at its layout. The point of using Lorem Ipsum is
                                 that it has a more-or-less normal distribution of letters.</p>
                             <div class="btn_main">
-                                <div class="buy_bt"><a><router-link to="/Bikes">Buy Now</router-link></a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
+                                <div class="buy_btn"><a><router-link to="/Bikes">Buy Now</router-link></a></div>
+                                <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
                                         style=" color: #325662">220</span></h4>
                             </div>
                         </div>
@@ -92,8 +92,8 @@
                                 readable content of a page when looking at its layout. The point of using Lorem Ipsum is
                                 that it has a more-or-less normal distribution of letters.</p>
                             <div class="btn_main">
-                                <div class="buy_bt"><a><router-link to="/Bikes">Buy Now</router-link></a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
+                                <div class="buy_btn"><a><router-link to="/Bikes">Buy Now</router-link></a></div>
+                                <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
                                         style=" color: #325662">280</span></h4>
                             </div>
                         </div>
@@ -118,10 +118,10 @@
                             <p class="lorem_text">It is a long established fact that a reader will be distracted by the
                                 readable content of a page when looking at its layout. The point of using Lorem Ipsum is
                                 that it has a more-or-less normal distribution of letters.</p>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a><router-link to="/Bikes">Buy Now</router-link></a></div>
-                                <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">250</span></h4>
+                                <div class="btn_main">
+                                <div class="buy_btn"><a><router-link to="/Bikes">Buy Now</router-link></a></div>
+                                <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
+                                        style=" color: #325662">280</span></h4>
                             </div>
                         </div>
                     </div>

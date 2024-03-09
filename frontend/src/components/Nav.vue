@@ -11,8 +11,8 @@
 
          <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
-               <li v-for="item, index in navItems" :key="index" class="nav-item active">
-                  <a class="nav-link"><router-link :to="item.path">{{ item.text }}</router-link></a>
+               <li v-for="item, index in navItems" :key="index" class="nav-item">
+                  <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
                </li>
             </ul>
             <div class="login_menu">
