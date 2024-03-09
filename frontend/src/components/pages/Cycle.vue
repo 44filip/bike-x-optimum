@@ -10,7 +10,7 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="best_text">Best</div>
-                                        <div class="image_1"><img src="images/img-1.png"></div>
+                                        <div class="image_1"><img src="images/main-img.png"></div>
                                     </div>
                                     <div class="col-md-5">
                                         <h1 class="banner_taital">New Model Cycle</h1>
