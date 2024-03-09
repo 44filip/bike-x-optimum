@@ -379,8 +379,9 @@ button {
     float: left;
     font-size: 18px;
     color: #ffffff;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 10px;
+    margin-bottom: 4px;
+    margin-left: 10px;
 }
 .login_menu li a{
 
