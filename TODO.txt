@@ -1,8 +1,5 @@
-Fix main page buttons
 Implement a better way to keep store cards static sized
-Fix aspect ratio of Shopping Card item images
 Finish the Shopping Cart page and features
 Add a new Shopping Cart image with empty/used changes
-Figure out Spring Boot and connections to MySQL and Vue
 Finish documentation and readme.md instructions
 Touch up and ship to university
