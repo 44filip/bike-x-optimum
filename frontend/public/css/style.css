@@ -60,6 +60,7 @@ a {
 }
 .email_text{
     width: 60%!important;
+    border-radius: 10px;
 }
 .cont{
     display: flex;
@@ -493,6 +494,7 @@ button {
     text-align: center;
     background-color: #f7c17b;
     padding: 8px 0px;
+    border-radius: 10px;
 }
 
 .contact_bt a:hover {
@@ -649,6 +651,7 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
     padding: 8px 5px;
     text-align: center;
     font-weight: bold;
+    border-radius: 10px;
 }
 .buy_bt a:hover{
     color: #ffffff;
@@ -1087,7 +1090,7 @@ box-shadow: 0px 8px 7px 3px
     padding: 20px;
     background-color: #fefeff;
     border: 0px;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 input.email-bt::placeholder {
@@ -1102,7 +1105,7 @@ input.email-bt::placeholder {
     padding: 40px 20px 10px;
     background-color: #fefeff;
     border: 0px;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 textarea#comment::placeholder {
@@ -1165,7 +1168,7 @@ textarea#comment::placeholder {
 .subscribe_bt {
     width: 180px;
     float: left;
-    margin: 20px;
+    margin: 10px;
 }
 .subscribe_bt a {
     width: 100%;
@@ -1176,6 +1179,7 @@ textarea#comment::placeholder {
     background-color: #f7c17b;
     padding: 8px;
     margin-top: 20px;
+    border-radius: 10px;
 }
 .subscribe_bt a:hover{
     color: #9e9c9c;
