@@ -29,7 +29,20 @@ var router = new VueRouter({
   routes
 })
 Vue.use(VueRouter)
-
+window.onload = function(){
+  if (!localStorage.getItem('vuex')) {
+    // If the key does not exist, set the initial value
+    localStorage.setItem('vuex', JSON.stringify(	{"cart":[]}));
+  }
+  if(window.localStorage) {
+    if(!localStorage.getItem('firstLoad')) {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    } else {
+      localStorage.removeItem('firstLoad');
+    }
+ }
+}
 new Vue({
   router,
   store,

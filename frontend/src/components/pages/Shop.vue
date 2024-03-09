@@ -11,11 +11,11 @@
                     <div class="container-fluid table-wrap" bis_skin_checked="1">
                         <table id="table" class="table table-bordered ">
                             <thead>
-                                <tr class="shopTr">
+                                <tr v-if="cart.length != 0" class="shopTr">
                                     <th scope="col">Name</th>
                                     <th scope="col">Item</th>
                                     <th scope="col">Price</th>
-                                    
+
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -23,17 +23,21 @@
                                 <tr class="shopTr" v-for="item in cart" :key="item.id">
                                     <td scope="col">{{ item.name }}</td>
                                     <td scope="col"><img :src=item.img class="card-img-top cat-pic"></td>
-                                    <td scope="col"><span style=" color: #f7c17b">$</span> <span
-                                            style=" color: #325662">{{ item.price }}</span></td>
-                                    <td scope="col"><div class="remove_btn"><a href="javascript:void(0);" @click="removeFromCart(item)">Remove</a></div></td>
-                                    
+                                    <td scope="col"><span style=" color: #f7c17b">$</span> <span style=" color: #325662">{{
+                                        item.price }}</span></td>
+                                    <td scope="col">
+                                        <div class="remove_btn"><a href="javascript:void(0);"
+                                                @click="removeFromCart(item)">Remove</a></div>
+                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                     </div>
-                    
-            <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);" @click="clearCart">Clear Cart</a></div>
+
+                    <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
+                            @click="clearCart">Clear Cart</a></div>
                 </div>
 
             </div>
@@ -50,6 +54,7 @@
 
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
+
     name: "ShopComponent",
     computed: {
         cart() {
@@ -71,6 +76,11 @@ export default {
         },
         removeFromCart(item) {
             this.$store.commit('removeItem', item);
+        }
+    },
+    created :{
+        clearCart() {
+            this.$store.commit('emptyCart');
         }
     }
 }
