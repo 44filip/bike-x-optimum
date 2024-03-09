@@ -57,17 +57,17 @@ export default {
       bikes: [
         {
           name: "Bike 1 - Cycle",
-          img: "/images/img-1.png",
+          img: "/images/img-2.png",
           price: "220"
         },
         {
           name: "Bike 2 - Stylish",
-          img: "/images/img-5.png",
+          img: "/images/img-3.png",
           price: "250"
         },
         {
           name: "Bike 3 - Modern",
-          img: "/images/img-6.png",
+          img: "/images/img-4.png",
           price: "280"
         }
       ]
