@@ -2,19 +2,19 @@
     <div class="contact_section layout_padding">
          <div class="container">
             <div class="contact_main">
-               <h1 class="request_text">A Call Back</h1>
+               <h1 class="request_text">For any inquiries:</h1>
                <form action="/action_page.php">
                   <div class="form-group">
                      <input type="text" class="email-bt" placeholder="Name" name="Name">
                   </div>
                   <div class="form-group">
-                     <input type="text" class="email-bt" placeholder="Email" name="Name">
+                     <input type="text" class="email-bt" placeholder="E-mail" name="E-mail">
                   </div>
                   <div class="form-group">
-                     <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
+                     <input type="text" class="email-bt" placeholder="Phone Number" name="Phone Number">
                   </div>
                   <div class="form-group">
-                     <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                     <textarea class="massage-bt" placeholder="Message" rows="5" id="comment" name="Message"></textarea>
                   </div>
                </form>
                <div class="send_btn"><a href="#">SEND</a></div>

@@ -24,7 +24,7 @@
 
             </div>
             <div class="col-lg-6 col-sm-6 cont">
-               <input type="text" class="email_text" placeholder="Enter Your Email" name="Enter Your Email">
+               <input type="text" class="email_text" placeholder="Enter your e-mail" name="Enter your e-mail">
                <div class="subscribe_bt"><a href="#">Subscribe</a></div>
             </div>
          </div>

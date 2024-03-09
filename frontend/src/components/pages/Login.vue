@@ -3,7 +3,7 @@
         <h1>Login</h1>
         <form class='login-form'>
             <div class="forma">
-                <input id="email" class='lf--input form-control' placeholder='Eamil' type='text'>
+                <input id="email" class='lf--input form-control' placeholder='E-mail' type='text'>
             </div>
             <div class="forma">
                 <input id="password" class='lf--input form-control' placeholder='Password' type='password'>
