@@ -26,12 +26,13 @@ CREATE TABLE `transactions` (
   `transaction_id` int NOT NULL AUTO_INCREMENT,
   `buyer` int NOT NULL,
   `product` int NOT NULL,
+  `datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`transaction_id`),
   KEY `buyer` (`buyer`),
   KEY `product` (`product`),
   CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`buyer`) REFERENCES `users` (`user_id`),
   CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`product`) REFERENCES `bikes` (`bike_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +41,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` VALUES (1,1,3,'2024-03-09 20:27:40'),(2,2,1,'2024-03-09 20:27:48'),(3,3,2,'2024-03-09 20:27:53');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-09  4:44:09
+-- Dump completed on 2024-03-09 23:19:35

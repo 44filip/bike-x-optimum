@@ -16,30 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bikes`
+-- Dumping events for database 'bike_store'
 --
 
-DROP TABLE IF EXISTS `bikes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bikes` (
-  `bike_id` int NOT NULL AUTO_INCREMENT,
-  `model` varchar(255) NOT NULL,
-  `price` double NOT NULL,
-  `img_relative_path` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`bike_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
--- Dumping data for table `bikes`
+-- Dumping routines for database 'bike_store'
 --
-
-LOCK TABLES `bikes` WRITE;
-/*!40000 ALTER TABLE `bikes` DISABLE KEYS */;
-INSERT INTO `bikes` VALUES (1,'Cycle',219.99,'/images/img-2.png'),(2,'Stylish',279.99,'/images/img-3.png'),(3,'Modern',249.99,'/images/img-4.png'),(4,'Classic',239.99,'/images/img-5.png'),(5,'Supreme',259.99,'/images/img-6.png'),(6,'Optimal',299.99,'/images/img-1.png');
-/*!40000 ALTER TABLE `bikes` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
