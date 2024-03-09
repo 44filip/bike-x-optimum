@@ -646,10 +646,9 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 .buy_bt a{
     width: 100%;
     float: left;
-    font-size: 18px;
+    font-size: 16px;
     color: #ffffff;
     background-color: black;
-    padding: 8px 5px;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
@@ -666,7 +665,6 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
     font-size: 20px;
     color: #222222;
     font-weight: bold;
-    padding-top: 8px;
 }
 .cycle_section_3{
     width: 100%;

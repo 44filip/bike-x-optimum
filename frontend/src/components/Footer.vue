@@ -7,9 +7,9 @@
                   <div class="call_text"><a href="#"><img src="images/map-icon.png"><span
                            class="padding_left_0">Location</span></a></div>
                   <div class="call_text"><a href="#"><img src="images/call-icon.png"><span class="padding_left_0">Call
-                           +01 123467890</span></a></div>
+                           +012 345/6718</span></a></div>
                   <div class="call_text"><a href="#"><img src="images/mail-icon.png"><span
-                           class="padding_left_0">demo@gmail.com</span></a></div>
+                           class="padding_left_0">demo@example.com</span></a></div>
                   <div class="call_text"><a href="/Bike X Optimum.pdf" target="_blank"><img src="images/toggle-icon.png"><span class="padding_left_0">Documentation</span></a></div>
                   <div class="social_icon">
                      <ul>
