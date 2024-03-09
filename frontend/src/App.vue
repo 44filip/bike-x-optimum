@@ -6,7 +6,7 @@
     <body>
       <Nav :navItems="navigation" />
       <main>
-        <router-view></router-view>
+        <router-view :products="bikes"></router-view>
 
       </main>
       <Footer />
@@ -53,6 +53,23 @@ export default {
         {
           text: "Login",
           path: "/login"
+        }
+      ],
+      bikes: [
+        {
+          name: "Bike 1 - Cycle",
+          img: "/images/img-1.png",
+          price: "220"
+        },
+        {
+          name: "Bike 2 - Stylish",
+          img: "/images/img-5.png",
+          price: "250"
+        },
+        {
+          name: "Bike 3 - Modern",
+          img: "/images/img-6.png",
+          price: "280"
         }
       ]
 

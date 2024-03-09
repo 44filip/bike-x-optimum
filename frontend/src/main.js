@@ -7,6 +7,7 @@ import Contact from './components/pages/Contact.vue'
 import Login from './components/pages/Login.vue'
 import Register from './components/pages/Register.vue'
 import Shop from './components/pages/Shop.vue'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -31,5 +32,6 @@ Vue.use(VueRouter)
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

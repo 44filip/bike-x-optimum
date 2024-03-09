@@ -12,67 +12,46 @@
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
+                <div v-for="product in products" :key="product.id" class="col">
                     <div class="card">
-                        <img src="/images/img-1.png" class="card-img-top"
-                            alt="img-1.png">
+                        <img :src=product.img class="card-img-top" alt="img-1.png">
                         <div class="card-body">
-                            <h5 class="card-title">Bike 1 - Cycle</h5>
+                            <h5 class="card-title">{{ product.name }}</h5>
                             <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                <div class="buy_bt"><a href="javascript:void(0);" @click="addToCart(product)">Buy
+                                        Now</a>
+                                    
+                                </div>
+
                                 <div>
                                     <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                            style=" color: #325662">220</span></h4>
+                                            style=" color: #325662">{{ product.price }}</span></h4>
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="/images/img-5.png" class="card-img-top"
-                            alt="img-5.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Bike 2 - Stylish</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <div>
-                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                            style=" color: #325662">220</span></h4>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="/images/img-6.png" class="card-img-top"
-                            alt="img-6.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Bike 3 - Modern</h5>
-                            <div class="btn_main">
-                                <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                <div>
-                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
-                                            style=" color: #325662">220</span></h4>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <popup ref="popup"></popup>
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
-
+import Popup from './PopupCart'
 export default {
+    components: {
+        Popup
+    },
     name: "BikesComponent",
+    props: ['products'],
+    methods: {
+        addToCart(product) {
+            this.$store.dispatch('addToCart', product);
+            this.$refs.popup.showPopup();
+        }
+    }
 
 }
 </script>
