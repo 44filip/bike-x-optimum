@@ -1,6 +1,8 @@
 package rs.ac.singidunum.backend;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TRANSACTIONS")
@@ -16,6 +18,10 @@ public class Transactions {
     @ManyToOne
     @JoinColumn(name = "product", referencedColumnName = "bikeId")
     private Bikes product;
+
+    @Column(name = "datetime", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime datetime;
 
     public int getTransactionId() {
         return transactionId;
