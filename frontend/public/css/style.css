@@ -136,6 +136,7 @@ h6 {
 .form-grou{
     
     margin-top: 120px; 
+    margin-bottom: 40px;
     display: flex!important;
     justify-content: center!important;
     flex-direction: column;
