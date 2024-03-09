@@ -6,9 +6,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        products: [
-            // Your product data
-        ],
         cart: [],
     },
     mutations: {
@@ -34,6 +31,11 @@ export default new Vuex.Store({
     modules: {
         cart: {
             namespaced: true
+        }
+    },
+    created:{
+        emptyCart(state){
+            state.cart = [];
         }
     }
 });
