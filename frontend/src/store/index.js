@@ -66,5 +66,10 @@ export default new Vuex.Store({
         emptyCart(state) {
             state.cart = [];
         }
+    },
+    getters: {
+        cartQuantity: state => {
+            return state.cart.reduce((total, item) => total + item.quantity, 0);
+        }
     }
 });

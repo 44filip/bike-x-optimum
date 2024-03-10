@@ -7,7 +7,7 @@
          </div>
       </div>
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-         <a class="logo"><router-link to="/cycle"><img src="images/logo.png"></router-link></a>
+         <a class="logo"><router-link to="/"><img src="images/logo.png"></router-link></a>
 
          <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
@@ -17,7 +17,7 @@
             </ul>
             <div class="login_menu">
                <ul>
-                  <li><a><router-link to="/shop"><img src="images/trolly-icon.png"></router-link></a></li>
+                  <li class="numCart"><router-link to="/shop"><img src="images/shopping-cart.png"><p class="numCart">{{ cartQuantity }}</p></router-link></li>
                </ul>
             </div>
          </form>
@@ -30,12 +30,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
    name: "NavComponent",
    props: ["navItems"],
-   mounted() {
-
-
+   computed: {
+      ...mapGetters([
+         'cartQuantity'
+      ])
    }
 };
 

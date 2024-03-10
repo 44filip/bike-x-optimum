@@ -41,6 +41,8 @@
 
 <script>
 import Popup from './PopupCart'
+
+import { mapGetters } from 'vuex';
 export default {
     components: {
         Popup
@@ -52,6 +54,11 @@ export default {
             this.$store.dispatch('addToCart', product);
             this.$refs.popup.showPopup();
         }
+    },
+    computed: {
+        ...mapGetters([
+            'cartQuantity'
+        ])
     }
 
 }

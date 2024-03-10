@@ -24,30 +24,30 @@ var routes = [
 
 var router = new VueRouter({
   scrollBehavior: () => {
-     return new Promise((resolve) => {
-       setTimeout(() => {
-         window.scrollTo(0, 0);
-         resolve({ x: 0, y: 0 });
-       }, 0);
-     });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        resolve({ x: 0, y: 0 });
+      }, 0);
+    });
   },
   routes
- });
+});
 
 Vue.use(VueRouter)
-window.onload = function(){
+window.onload = function () {
   if (!localStorage.getItem('vuex')) {
     // If the key does not exist, set the initial value
-    localStorage.setItem('vuex', JSON.stringify(	{"cart":[]}));
+    localStorage.setItem('vuex', JSON.stringify({ "cart": [] }));
   }
-  if(window.localStorage) {
-    if(!localStorage.getItem('firstLoad')) {
+  if (window.localStorage) {
+    if (!localStorage.getItem('firstLoad')) {
       localStorage['firstLoad'] = true;
       window.location.reload();
     } else {
       localStorage.removeItem('firstLoad');
     }
- }
+  }
 }
 new Vue({
   router,

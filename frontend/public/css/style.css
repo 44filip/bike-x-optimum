@@ -383,14 +383,16 @@ a :active{
     font-size: 18px;
     color: #ffffff;
     padding: 10px;
-    margin-bottom: 4px;
-    margin-left: 10px;
 }
 .login_menu li a{
 
     color: #ffffff;
 }
-
+.numCart{
+    color:black;
+    padding: 0px;
+    margin: 0px;
+}
 .sidenav {
     height: 100%;
     width: 0;
