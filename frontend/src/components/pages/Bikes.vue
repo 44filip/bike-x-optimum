@@ -20,7 +20,7 @@
                             <div class="btn_main">
                                 <div class="buy_bt"><a href="javascript:void(0);" @click="addToCart(product)">Buy
                                         Now</a>
-                                    
+
                                 </div>
 
                                 <div>
@@ -32,9 +32,10 @@
                         </div>
                     </div>
                 </div>
-                <popup ref="popup"></popup>
+                <popup class="popup" ref="popup"></popup>
             </div>
         </div>
+
     </div>
 </template>
 
