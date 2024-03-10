@@ -1360,4 +1360,10 @@ textarea#comment::placeholder {
     border: 1px solid #dddddd; /* Adjust the border color as needed */
 }
 
+td button {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+}
+
 /* contact section end*/
