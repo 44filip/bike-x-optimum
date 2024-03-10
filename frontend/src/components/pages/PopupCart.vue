@@ -10,12 +10,16 @@ export default {
         return {
             show: false,
             message: 'Item added to cart!',
+            timeoutId: null, // Initialize timeoutId in the data
         };
     },
     methods: {
         showPopup() {
             this.show = true;
-            setTimeout(() => {
+            // Clear any existing timeout
+            clearTimeout(this.timeoutId);
+            // Set a new timeout
+            this.timeoutId = setTimeout(() => {
                 this.show = false;
             }, 1000); // Hide after 1 second
         },
@@ -33,5 +37,6 @@ export default {
     padding: 40px;
     border: 1px solid #ccc;
     z-index: 1000;
+    pointer-events: none;
 }
 </style>

@@ -735,7 +735,7 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 .buy_bt a{
     width: 100%;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     background-color: black;
     text-align: center;
@@ -1411,10 +1411,6 @@ td button :disabled{
 
 .th_item {
     width:330px;
-}
-
-.container {
-    margin-bottom: 40px;
 }
 
 /* contact section end*/
