@@ -30,7 +30,7 @@
                         item.price * item.quantity).toFixed(2) }}</span></td>
                                     <td scope="col"><button class="minus" @click="decrementQuantity(item)"
                                             :disabled="item.quantity <= 1">-</button>{{ item.quantity }}<button
-                                            @click="incrementQuantity(item)" :disabled="item.quantity >= 10">+</button>
+                                            @click="incrementQuantity(item)">+</button>
                                     </td>
                                     <td scope="col">
                                         <div class="remove_btn"><a href="javascript:void(0);"

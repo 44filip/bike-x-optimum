@@ -17,7 +17,7 @@
             </ul>
             <div class="login_menu">
                <ul>
-                  <li class="numCart"><router-link to="/shop"><div class="cartF"><div><img src="images/shopping-cart.png"></div><div class="numCart">{{ cartQuantity }}</div></div></router-link></li>
+                  <li class="numCart"><router-link to="/shop"><div class="cartF"><div><img id="cartLogo" src="/images/shopping-cart.png"></div><div class="numCart">{{ cartQuantity }}</div></div></router-link></li>
                </ul>
             </div>
          </form>
