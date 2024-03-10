@@ -23,11 +23,17 @@ var routes = [
 ]
 
 var router = new VueRouter({
-  scrollBehavior() {
-    return { x: 0, y: 0 }; // Scrolls to the top of the page
+  scrollBehavior: () => {
+     return new Promise((resolve) => {
+       setTimeout(() => {
+         window.scrollTo(0, 0);
+         resolve({ x: 0, y: 0 });
+       }, 0);
+     });
   },
   routes
-})
+ });
+
 Vue.use(VueRouter)
 window.onload = function(){
   if (!localStorage.getItem('vuex')) {
