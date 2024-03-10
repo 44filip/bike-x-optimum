@@ -791,7 +791,7 @@ a :active {
 .buy_bt a {
     width: 100%;
     float: left;
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     background-color: black;
     text-align: center;
@@ -1526,4 +1526,6 @@ td button :disabled {
     width: 330px;
 }
 
-/* contact section end*/
+.container {
+    margin-bottom: 40px;
+}
