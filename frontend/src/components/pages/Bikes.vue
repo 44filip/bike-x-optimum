@@ -12,7 +12,7 @@
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div v-for="product in products" :key="product.id" class="col">
+                <div v-for="product in products" :key="product.id" class="col-md-4">
                     <div class="card">
                         <img :src=product.img class="card-img-top" alt="img-1.png">
                         <div class="card-body">
