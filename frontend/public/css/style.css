@@ -675,6 +675,7 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 .remove_btn{
     width: 100%;
     text-align: center;
+    padding-bottom: 15px;
 }
 .remove_btn a{
     width: 100%;
@@ -706,9 +707,15 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
 }
 
 .table {
+    margin-top: 30px;
     margin-bottom: 30px;
 }
-
+.checkout{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .buy_bt{
     width: 40%;
     text-align: center;
@@ -1373,5 +1380,11 @@ td button :disabled{
 }
 :disabled{
     background-color: lightgray!important;
+}
+.quant{
+    width: 210px;
+}
+.price{
+    width: 150px
 }
 /* contact section end*/
