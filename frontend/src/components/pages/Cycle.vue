@@ -79,7 +79,7 @@
                             <div class="btn_main">
                                 <div class="buy_btn"><router-link to="/bikes">Order</router-link></div>
                                 <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">220</span></h4>
+                                        style=" color: #325662">219.99</span></h4>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <div class="btn_main">
                                 <div class="buy_btn"><router-link to="/bikes">Order</router-link></div>
                                 <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">280</span></h4>
+                                        style=" color: #325662">279.99</span></h4>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -121,7 +121,7 @@
                             <div class="btn_main">
                                 <div class="buy_btn"><router-link to="/bikes">Order</router-link></div>
                                 <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
-                                        style=" color: #325662">280</span></h4>
+                                        style=" color: #325662">249.99</span></h4>
                             </div>
                         </div>
                     </div>
