@@ -83,6 +83,9 @@ a {
 .lf--forgot {
     text-align: center;
 }
+.lf--forgot :hover{
+    color: #f7c17b;
+}
 
 .email-text {
     margin: 10px !important;
