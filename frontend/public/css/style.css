@@ -713,7 +713,7 @@ clip-path: polygon(0 0, 75% 8%, 75% 80%, 0% 100%);
     margin-bottom: 30px;
 }
 .checkout{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1354,6 +1354,7 @@ textarea#comment::placeholder {
 #table thead tr th:last-child {
     border: none;
     padding-left: 30px;
+    padding-right: 30px;
 }
 
 /* Adjust the table's border settings */
@@ -1389,4 +1390,17 @@ td button :disabled{
 .price{
     width: 150px
 }
+
+.th_remove {
+    width:210px;
+}
+
+.th_name {
+    width:210px;
+}
+
+.th_item {
+    width:330px;
+}
+
 /* contact section end*/

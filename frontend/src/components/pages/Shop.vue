@@ -14,11 +14,11 @@
                         <table id="table" class="table table-bordered ">
                             <thead>
                                 <tr v-if="cart.length != 0" class="shopTr">
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Item</th>
+                                    <th class="th_name" scope="col">Name</th>
+                                    <th class="th_item" scope="col">Item</th>
                                     <th class="price" scope="col">Price</th>
                                     <th class="quant" scope="col">Quantity</th>
-                                    <th scope="col"></th>
+                                    <th class="th_remove" scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
