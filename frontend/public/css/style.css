@@ -524,8 +524,8 @@ a :active {
     content: url('/images/shopping-cart2.png');
 }
 #emptyCart{
-    margin-top: 120px;
-    margin-bottom: 110px;
+    margin-top: 18vh;
+    margin-bottom: 22vh;
 }
 #emptyCart h2{
     font-size: 50px;
