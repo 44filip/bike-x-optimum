@@ -18,8 +18,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <div class="btn_main">
-                                <div class="buy_bt"><a href="javascript:void(0);" @click="addToCart(product)">Buy
-                                        Now</a>
+                                <div class="buy_bt"><a href="javascript:void(0);" @click="addToCart(product)">Add to
+                                        Cart</a>
 
                                 </div>
 
