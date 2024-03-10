@@ -1,12 +1,13 @@
 <template>
     <div class="latest-products" bis_skin_checked="1">
         <div class="container" bis_skin_checked="1">
-            <div class="row" bis_skin_checked="1">
-                <div class="col-md-12" bis_skin_checked="1">
-                    <div class="section-heading" bis_skin_checked="1">
-                        <h2>Shopping cart</h2>
-                    </div>
+            <div class="col-md-12" bis_skin_checked="1">
+                <div class="section-heading" bis_skin_checked="1">
+                    <h2>Shopping cart</h2>
                 </div>
+            </div>
+            <div v-if="cart.length != 0" class="row" bis_skin_checked="1">
+
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="row" bis_skin_checked="1">
                     <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
                             @click="clearCart">Clear Cart</a></div>
@@ -43,7 +44,8 @@
 
                     </div>
                     <div class="checkout">
-                        <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{ totalPrice.toFixed(2) }}</p><br>
+                        <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
+                        totalPrice.toFixed(2) }}</p><br>
                         <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
                                 @click="clearCart">Checkout</a></div>
                     </div>
@@ -52,7 +54,7 @@
 
             </div>
             <div v-if="cart.length === 0" id="emptyCart" bis_skin_checked="1">
-                <h2 >Your shopping cart is empty!</h2>
+                <h2>Your shopping cart is empty!</h2>
             </div>
 
         </div>
