@@ -524,7 +524,12 @@ a :active {
 .router-link-active #cartLogo {
     content: url('/images/shopping-cart2.png');
 }
-
+#emptyCart{
+    margin-top: 120px;
+}
+#emptyCart h2{
+    font-size: 50px;
+}
 .router-link-active ~ #cartLogo {
     content: url('/images/shopping-cart.png');
 }
