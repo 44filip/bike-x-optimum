@@ -26,7 +26,7 @@
                                     <td scope="col"><span style=" color: #f7c17b">$</span> <span
                                             style=" color: #325662">{{
                                     item.price }}</span></td>
-                                    <td scope="col"><button @click="decrementQuantity(item)" :disabled="item.quantity <= 1">-</button>{{ item.quantity }}<button @click="incrementQuantity(item)">+</button></td>
+                                    <td scope="col"><button class="minus" @click="decrementQuantity(item)" :disabled="item.quantity <= 1">-</button>{{ item.quantity }}<button @click="incrementQuantity(item)" :disabled="item.quantity >= 50">+</button></td>
                                     <td scope="col">
                                         <div class="remove_btn"><a href="javascript:void(0);"
                                                 @click="removeFromCart(item)">Remove</a></div>

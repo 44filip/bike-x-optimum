@@ -1363,6 +1363,15 @@ td button {
     width: 25px;
     height: 25px;
     margin: 0 10px;
+    background-color: #f7c17b;
 }
-
+td button :disabled{
+    background-color: lightgray;
+}
+.minus :disabled{
+    background-color: lightgray!important;
+}
+:disabled{
+    background-color: lightgray!important;
+}
 /* contact section end*/
