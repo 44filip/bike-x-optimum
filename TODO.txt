@@ -1,6 +1,6 @@
 Increase store cards from 3 to 6 (2 rows 3 columns)
 Find a different fix for the empty shopping cart array
-Finish the shopping cart page and features (total cost, proceed)
+Finish the shopping cart page and features (quantity, total cost, proceed)
 Add a new shopping cart image with empty/used changes (change state)
 Implement functional login system that allows for money top-up
 Password hashing function
