@@ -15,8 +15,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Item</th>
                                     <th scope="col">Price</th>
-
-                                    <th scope="col"></th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
