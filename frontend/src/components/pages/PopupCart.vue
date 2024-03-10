@@ -9,7 +9,7 @@ export default {
     data() {
         return {
             show: false,
-            message: 'Item added to cart',
+            message: 'Item added to cart!',
         };
     },
     methods: {
@@ -17,7 +17,7 @@ export default {
             this.show = true;
             setTimeout(() => {
                 this.show = false;
-            }, 3000); // Hide after 3 seconds
+            }, 2000); // Hide after 2 seconds
         },
     },
 };

@@ -12,7 +12,7 @@
                 <input class='lf--submit form-control' type='submit' value='LOGIN'>
             </div>
         </form>
-        <a class='lf--forgot'><router-link to="/Register">Don't have an account?<br>Register HERE</router-link></a>
+        <a class='lf--forgot'><router-link to="/register">Don't have an account?<br>Register HERE</router-link></a>
     </div>
 </template>
 <script>
