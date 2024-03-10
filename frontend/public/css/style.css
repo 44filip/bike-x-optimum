@@ -390,8 +390,12 @@ a :active{
 }
 .numCart{
     color:black;
-    padding: 0px;
+    padding-left: 8px;
     margin: 0px;
+}
+.cartF{
+    display: flex;
+    width: 60px;
 }
 .sidenav {
     height: 100%;
