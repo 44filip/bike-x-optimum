@@ -58,21 +58,21 @@ export default {
         {
           id:1,
           name: "Bike 1 - Cycle",
-          img: "/images/img-2.png",
+          img: "/images/img-1.png",
           price: 219.99,
           quantity: 0
         },
         {
           id:2,
           name: "Bike 2 - Stylish",
-          img: "/images/img-3.png",
+          img: "/images/img-2.png",
           price: 279.99,
           quantity: 0
         },
         {
           id:3,
           name: "Bike 3 - Modern",
-          img: "/images/img-4.png",
+          img: "/images/img-3.png",
           price: 249.99,
           quantity: 0
         },
