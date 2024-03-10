@@ -51,8 +51,8 @@
                 </div>
 
             </div>
-            <div id="emptyCart" bis_skin_checked="1">
-                <h2 v-if="cart.length === 0">Your shopping cart is empty!</h2>
+            <div v-if="cart.length === 0" id="emptyCart" bis_skin_checked="1">
+                <h2 >Your shopping cart is empty!</h2>
             </div>
 
         </div>
