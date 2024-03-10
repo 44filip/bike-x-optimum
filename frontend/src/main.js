@@ -12,7 +12,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 var routes = [
-  { path: "/cycle", component: Cycle },
+  //{ path: "/cycle", component: Cycle },
   { path: "/", component: Cycle },
   { path: "/bikes", component: Bikes },
   { path: "/contact", component: Contact },
