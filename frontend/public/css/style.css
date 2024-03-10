@@ -526,6 +526,7 @@ a :active {
 }
 #emptyCart{
     margin-top: 120px;
+    margin-bottom: 110px;
 }
 #emptyCart h2{
     font-size: 50px;
