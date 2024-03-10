@@ -10,7 +10,12 @@ export default new Vuex.Store({
     },
     mutations: {
         addToCart(state, product) {
-            state.cart.push(product);
+            const index = state.cart.findIndex(cartItem => cartItem.id === product.id);
+            if (index !== -1) {
+                state.cart[index].quantity += 1; // Increment quantity if item already exists
+            } else {
+                state.cart.push({ ...product, quantity: 1 }); // Add new item with quantity 1
+            }
         },
         emptyCart(state) {
             state.cart = [];
@@ -33,8 +38,8 @@ export default new Vuex.Store({
             namespaced: true
         }
     },
-    created:{
-        emptyCart(state){
+    created: {
+        emptyCart(state) {
             state.cart = [];
         }
     }
