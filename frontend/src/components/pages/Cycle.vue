@@ -68,7 +68,7 @@
                         <div class="col-md-6">
                             <div class="box_main">
                                 <h6 class="number_text">01</h6>
-                                <div class="image_2"><img src="images/img-2.png"></div>
+                                <div class="image_2"><img src="images/img-1.png"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -100,7 +100,7 @@
                         <div class="col-md-6">
                             <div class="box_main_3">
                                 <h6 class="number_text_2">02</h6>
-                                <div class="image_2"><img src="images/img-3.png"></div>
+                                <div class="image_2"><img src="images/img-2.png"></div>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                         <div class="col-md-6">
                             <div class="box_main_3">
                                 <h6 class="number_text_2">03</h6>
-                                <div class="image_2"><img src="images/img-4.png"></div>
+                                <div class="image_2"><img src="images/img-3.png"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
