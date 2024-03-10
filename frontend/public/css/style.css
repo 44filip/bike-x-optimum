@@ -1534,3 +1534,8 @@ td button :disabled {
 .container {
     margin-bottom: 40px;
 }
+
+.checkout p {
+    font-weight: bold;
+    font-size: 20px;
+}
