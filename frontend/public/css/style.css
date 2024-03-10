@@ -580,7 +580,8 @@ a :active{
     position: relative;
 }
 .cat-pic{
-    height: 20vh;
+    height: 15vh;
+    width: auto;
 }
 .number_text {
     width: 50px;

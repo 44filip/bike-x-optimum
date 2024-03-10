@@ -16,7 +16,7 @@
                                         <h1 class="banner_taital">New Model Cycle</h1>
                                         <p class="banner_text">It is a long established fact that a reader will be
                                             distracted by the readable content. </p>
-                                        <div class="contact_bt"><router-link to="/Bikes">Shop Now</router-link>
+                                        <div class="contact_bt"><router-link to="/bikes">Shop Now</router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                 readable content of a page when looking at its layout. The point of using Lorem Ipsum is
                                 that it has a more-or-less normal distribution of letters.</p>
                             <div class="btn_main">
-                                <div class="buy_btn"><router-link to="/Bikes">Order</router-link></div>
+                                <div class="buy_btn"><router-link to="/bikes">Order</router-link></div>
                                 <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
                                         style=" color: #325662">220</span></h4>
                             </div>
@@ -92,7 +92,7 @@
                                 readable content of a page when looking at its layout. The point of using Lorem Ipsum is
                                 that it has a more-or-less normal distribution of letters.</p>
                             <div class="btn_main">
-                                <div class="buy_btn"><router-link to="/Bikes">Order</router-link></div>
+                                <div class="buy_btn"><router-link to="/bikes">Order</router-link></div>
                                 <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
                                         style=" color: #325662">280</span></h4>
                             </div>
@@ -119,7 +119,7 @@
                                 readable content of a page when looking at its layout. The point of using Lorem Ipsum is
                                 that it has a more-or-less normal distribution of letters.</p>
                             <div class="btn_main">
-                                <div class="buy_btn"><router-link to="/Bikes">Order</router-link></div>
+                                <div class="buy_btn"><router-link to="/bikes">Order</router-link></div>
                                 <h4 class="price_tex">Price <span style=" color: #f7c17b">$</span> <span
                                         style=" color: #325662">280</span></h4>
                             </div>
