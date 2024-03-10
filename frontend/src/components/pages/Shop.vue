@@ -23,9 +23,10 @@
                                 <tr class="shopTr" v-for="item in cart" :key="item.id">
                                     <td scope="col">{{ item.name }}</td>
                                     <td scope="col"><img :src=item.img class="card-img-top cat-pic"></td>
-                                    <td scope="col"><span style=" color: #f7c17b">$</span> <span style=" color: #325662">{{
-                                        item.price }}</span></td>
-                                    <td scope="col">{{ item.quantity }}</td>
+                                    <td scope="col"><span style=" color: #f7c17b">$</span> <span
+                                            style=" color: #325662">{{
+                                    item.price }}</span></td>
+                                    <td scope="col"><button v-if = "item.quantity != 1" @click="decrementQuantity(item)">-</button>{{ item.quantity }}<button @click="incrementQuantity(item)">+</button></td>
                                     <td scope="col">
                                         <div class="remove_btn"><a href="javascript:void(0);"
                                                 @click="removeFromCart(item)">Remove</a></div>
@@ -77,9 +78,15 @@ export default {
         },
         removeFromCart(item) {
             this.$store.commit('removeItem', item);
+        },
+        incrementQuantity(item) {
+            this.$store.dispatch('incrementQuantity', item);
+        },
+        decrementQuantity(item) {
+            this.$store.dispatch('decrementQuantity', item);
         }
     },
-    created :{
+    created: {
         clearCart() {
             this.$store.commit('emptyCart');
         }

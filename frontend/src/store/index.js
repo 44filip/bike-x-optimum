@@ -25,12 +25,36 @@ export default new Vuex.Store({
             if (index !== -1) {
                 state.cart.splice(index, 1);
             }
+        },
+        incrementQuantity(state, item) {
+            const index = state.cart.findIndex(cartItem => cartItem.id === item.id);
+            if (index !== -1) {
+                state.cart[index].quantity += 1; // Increment quantity
+            }
+        },
+        decrementQuantity(state, item) {
+            const index = state.cart.findIndex(cartItem => cartItem.id === item.id);
+            if (index !== -1 && state.cart[index].quantity > 1) {
+                state.cart[index].quantity -= 1; // Decrement quantity, but not below 1
+            }
         }
     },
     actions: {
         addToCart({ commit }, product) {
             commit('addToCart', product);
         },
+        emptyCart({ commit }) {
+            commit('emptyCart');
+        },
+        removeItem({ commit }, item) {
+            commit('removeItem', item);
+        },
+        incrementQuantity({ commit }, item) {
+            commit('incrementQuantity', item);
+        },
+        decrementQuantity({ commit }, item) {
+            commit('decrementQuantity', item);
+        }
     },
     plugins: [createPersistedState()],
     modules: {
