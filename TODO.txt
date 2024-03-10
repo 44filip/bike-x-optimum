@@ -1,6 +1,4 @@
-Implement a better way to keep store cards static sized
 Increase store cards from 3 to 6 (2 rows 3 columns)
-Link isn't active when clicking Order or Shop Now
 Find a different fix for the empty shopping cart array
 Finish the shopping cart page and features (total cost, proceed)
 Add a new shopping cart image with empty/used changes (change state)
