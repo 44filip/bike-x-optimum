@@ -19,7 +19,7 @@
     transition: ease all 0.5s;
 }
 .popup{
-    opacity: 0.7;
+    opacity: 0.9;
 }
 html {
     scroll-behavior: smooth;
