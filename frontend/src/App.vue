@@ -72,6 +72,24 @@ export default {
           img: "/images/img-4.png",
           price: 249.99,
           quantity: 0
+        },
+        {
+          name: "Bike 4 - Classic",
+          img: "/images/img-4.png",
+          price: 239.99,
+          quantity: 0
+        },
+        {
+          name: "Bike 5 - Supreme",
+          img: "/images/img-5.png",
+          price: 259.99,
+          quantity: 0
+        },
+        {
+          name: "Bike 6 - Optimal",
+          img: "/images/img-6.png",
+          price: 299.99,
+          quantity: 0
         }
       ]
 
