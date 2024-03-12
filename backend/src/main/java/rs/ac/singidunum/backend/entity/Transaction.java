@@ -1,5 +1,6 @@
 package rs.ac.singidunum.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,14 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transactionId;
 
+    @Transient
+    @JsonProperty("userId")
+    private int userId;
+
+    @Transient
+    @JsonProperty("bikeId")
+    private int bikeId;
+
     @ManyToOne
     @JoinColumn(name = "buyer", referencedColumnName = "userId")
     private User buyer;
@@ -28,4 +37,9 @@ public class Transaction {
 
     @Column(name = "datetime", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime datetime;
+
+    @PrePersist
+    public void prePersist() {
+        this.datetime = LocalDateTime.now();
+    }
 }

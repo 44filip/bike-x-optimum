@@ -42,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'generic1@example.com','hash1',1100,'user'),(2,'generic2@example.com','hash2',2250,'user'),(3,'generic3@example.com','hash3',550,'user');
+INSERT INTO `users` VALUES (1,'generic1@example.com','pass1',1100,'admin'),(2,'generic2@example.com','pass2',2250,'user'),(3,'generic3@example.com','pass3',550,'user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  4:57:05
+-- Dump completed on 2024-03-12  7:53:01

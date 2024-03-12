@@ -18,29 +18,25 @@ USE `bike_store`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bikes`
+-- Table structure for table `users_seq`
 --
 
-DROP TABLE IF EXISTS `bikes`;
+DROP TABLE IF EXISTS `users_seq`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bikes` (
-  `bike_id` int NOT NULL AUTO_INCREMENT,
-  `model` varchar(255) NOT NULL,
-  `price` double NOT NULL,
-  `img_path` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`bike_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `users_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bikes`
+-- Dumping data for table `users_seq`
 --
 
-LOCK TABLES `bikes` WRITE;
-/*!40000 ALTER TABLE `bikes` DISABLE KEYS */;
-INSERT INTO `bikes` VALUES (1,'Cycle',219.99,'/images/img-1.png'),(2,'Stylish',279.99,'/images/img-2.png'),(3,'Modern',249.99,'/images/img-3.png'),(4,'Classic',239.99,'/images/img-4.png'),(5,'Supreme',259.99,'/images/img-5.png'),(6,'Optimal',299.99,'/images/img-6.png');
-/*!40000 ALTER TABLE `bikes` ENABLE KEYS */;
+LOCK TABLES `users_seq` WRITE;
+/*!40000 ALTER TABLE `users_seq` DISABLE KEYS */;
+INSERT INTO `users_seq` VALUES (101);
+/*!40000 ALTER TABLE `users_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  7:53:01
+-- Dump completed on 2024-03-12  7:53:02
