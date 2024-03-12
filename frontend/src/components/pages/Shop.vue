@@ -44,8 +44,8 @@
 
                     </div>
                     <div class="checkout">
-                        <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
-                        totalPrice.toFixed(2) }}</p><br>
+                        <!-- <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
+                        totalPrice.toFixed(2) }}</p><br> -->
                         <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
                                 @click="clearCart">Checkout</a></div>
                     </div>
@@ -82,9 +82,9 @@ export default {
         ...mapState('cart', {
             checkoutStatus: state => state.checkoutStatus
         }),
-        totalPrice: function () {
-            return this.$store.state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        }
+        // totalPrice: function () {
+        //     return this.$store.state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        // }
     },
     methods: {
 

@@ -70,8 +70,8 @@ export default new Vuex.Store({
         }
     },
     getters: {
-        cartQuantity: state => {
-            return state.cart.reduce((total, item) => total + item.quantity, 0);
-        }
+        // cartQuantity: state => {
+        //     return state.cart.reduce((total, item) => total + item.quantity, 0);
+        // }
     }
 });

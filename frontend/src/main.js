@@ -66,4 +66,3 @@ new Vue({
   },
   render: h => h(App),
 }).$mount('#app')
-console.log(this.$store.state.cart);

@@ -1,23 +1,25 @@
 <template>
     <div class="form-grou">
         <h1>Login</h1>
-        <form class='login-form'>
-            <div class="forma">
+        <form class='login-form' @submit.prevent="performLogin">
+            <div class="form-group">
                 <input v-model="username" id="email" class='lf--input form-control' placeholder='E-mail' type='text'>
             </div>
-            <div class="forma">
+            <div class="form-group">
                 <input v-model="password" id="password" class='lf--input form-control' placeholder='Password'
                     type='password'>
             </div>
-            <div class="forma">
-                <input @click="performLogin" class='lf--submit form-control' type='submit' value='LOGIN'>
+            <div class="form-group">
+                <input class='lf--submit form-control' type='submit' value='LOGIN'>
             </div>
         </form>
         <a class='lf--forgot'><router-link to="/register">Don't have an account?<br>Register HERE</router-link></a>
     </div>
 </template>
+
 <script>
-import { mapGetters } from "vuex"
+import axios from 'axios';
+
 export default {
     name: "LoginComponent",
     data() {
@@ -26,42 +28,30 @@ export default {
             username: "",
             password: ""
         }
-    }, computed: {
-        ...mapGetters(['users', 'role'])
     },
     methods: {
-        performLogin() {
-            this.error = ""
+        async performLogin() {
+            try {
+                const response = await axios.get(`http://localhost:8081/user/email/${this.username}`);
+                const user = response.data;
 
-            if (!this.username) {
-                this.error = "Email is required.";
-                return;
+                if (user && user.password === this.password) {
+                    console.log(response.data);
+                    delete user.password;
+                    localStorage.setItem("user", JSON.stringify(user));
+
+                    this.$store.commit("setUser", user);
+
+                    this.$router.push("/shop");
+                    window.location.reload();
+                    this.$forceUpdate()
+                } else {
+                    console.log("Invalid email or password.");
+                }
+            } catch (error) {
+                this.error = "An error occurred during login.";
+                console.error(error);
             }
-
-            if (!this.password) {
-                this.error = "Password is required.";
-                return;
-            }
-
-            let user = this.users.find(x => x.username == this.username &&
-                x.password == this.password);
-
-            if (!user) {
-                this.error = "Wrong credentials."
-                return
-            }
-
-            let localStorageItem = {
-                username: user.username,
-                role: user.role
-            }
-            localStorage.setItem("user", JSON.stringify(localStorageItem));
-
-            this.$store.commit("changeUser", localStorageItem)
-            this.$router.push("/shop")
-
-            window.location.reload();
-            this.$forceUpdate()
         }
     }
 }

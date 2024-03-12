@@ -34,21 +34,6 @@ export default {
       }
     },
  },
- methods: {
-    async getUsers() {
-      try {
-        const response = await fetch('http://localhost:8081/api/users'); // Ensure to use http:// or https://
-        const data = await response.json();
-        console.log(data);
-        this.users = data; // Store the fetched users in the component's data
-      } catch (error) {
-        console.error(error);
-      }
-    },
- },
- created() {
-    this.getUsers(); // Call the getUsers method when the component is created
- },
  data() {
     return {
       users: [], // Initialize users as an empty array
