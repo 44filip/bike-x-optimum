@@ -10,11 +10,8 @@ public class Users {
     private int userId;
     private String email;
     private String password;
+    private String role;
     private double balance;
-    
-    @Enumerated(EnumType.STRING) // Use EnumType.STRING to store the enum as a string in the database
-    @Column(name = "role", columnDefinition = "varchar(255) default 'ADMIN'") // Specify the column name and default value
-    private Role role = Role.ADMIN; // Default value
 
     // Getters and setters
     public int getUserId() {
@@ -49,11 +46,11 @@ public class Users {
         this.balance = balance;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }
