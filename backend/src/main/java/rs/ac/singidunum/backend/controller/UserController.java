@@ -20,11 +20,11 @@ public class UserController {
     public List<User> findAllUsers(){
         return service.getUsers();
     }
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/id/{id}")
     public User findUserById(@PathVariable int id){
         return service.getUserById(id);
     }
-    @GetMapping("/user/{email}")
+    @GetMapping("/user/email/{email}")
     public User findUserByEmail(@PathVariable String email){
         return service.getUserByEmail(email);
     }

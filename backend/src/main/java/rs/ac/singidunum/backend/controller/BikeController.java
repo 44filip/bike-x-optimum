@@ -15,11 +15,11 @@ public class BikeController {
     public List<Bike> findAllBikes(){
         return service.getBikes();
     }
-    @GetMapping("/bike/{id}")
+    @GetMapping("/bike/id/{id}")
     public Bike findBikeById(@PathVariable int id){
         return service.getBikeById(id);
     }
-    @GetMapping("/bike/{model}")
+    @GetMapping("/bike/model/{model}")
     public Bike findBikeByModel(@PathVariable String model){
         return service.getBikeByModel(model);
     }

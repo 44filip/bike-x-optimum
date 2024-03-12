@@ -24,16 +24,16 @@ public class UserService {
         return repository.findById(id).orElse(null);
     }
 
-    public User getUserByEmail(String email){
+    public User getUserByEmail(String email) {
         return repository.findByEmail(email);
     }
 
-    public String deleteUser(int id){
+    public String deleteUser(int id) {
         repository.deleteById(id);
         return "user " + id + " removed";
     }
 
-    public User updateUser(User user){
+    public User updateUser(User user) {
         User existingUser = repository.findById(user.getUserId()).orElse(null);
         assert existingUser != null;
         existingUser.setEmail(user.getEmail());
