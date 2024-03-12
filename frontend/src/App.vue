@@ -48,10 +48,6 @@ export default {
         {
           text: "Contact",
           path: "/contact"
-        },
-        {
-          text: "Login",
-          path: "/login"
         }
       ],
       bikes: [
