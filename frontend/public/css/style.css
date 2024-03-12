@@ -529,6 +529,9 @@ a :active {
 #emptyCart{
     margin-top: 18vh;
     margin-bottom: 22vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #emptyCart h2{
     font-size: 50px;
