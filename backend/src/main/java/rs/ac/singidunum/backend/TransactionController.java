@@ -15,7 +15,7 @@ public class TransactionController {
     private TransactionRepository transactionRepository;
 
     @GetMapping
-    public List<Transactions> getAllBikes() {
+    public List<Transactions> getAllTransactions() {
         return transactionRepository.findAll();
     }
 }

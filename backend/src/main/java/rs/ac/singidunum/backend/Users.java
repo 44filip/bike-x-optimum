@@ -9,9 +9,14 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
     private String email;
-    private String passwordHash;
+    private String password;
     private double balance;
+    
+    @Enumerated(EnumType.STRING) // Use EnumType.STRING to store the enum as a string in the database
+    @Column(name = "role", columnDefinition = "varchar(255) default 'ADMIN'") // Specify the column name and default value
+    private Role role = Role.ADMIN; // Default value
 
+    // Getters and setters
     public int getUserId() {
         return userId;
     }
@@ -28,12 +33,12 @@ public class Users {
         this.email = email;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public double getBalance() {
@@ -43,5 +48,12 @@ public class Users {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
