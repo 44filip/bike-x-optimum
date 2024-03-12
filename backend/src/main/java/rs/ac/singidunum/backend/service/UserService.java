@@ -12,6 +12,7 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
+    @SuppressWarnings("null")
     public User saveUser(User user) {
         return repository.save(user);
     }
