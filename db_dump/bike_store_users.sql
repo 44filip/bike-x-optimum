@@ -28,9 +28,11 @@ CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `balance` double NOT NULL,
+  `balance` double NOT NULL DEFAULT '0',
+  `role` varchar(10) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `email` (`email`),
+  CONSTRAINT `chk_role_values` CHECK ((`role` in (_utf8mb4'admin',_utf8mb4'user')))
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'generic1@example.com','hash1',1100),(2,'generic2@example.com','hash2',2250),(3,'generic3@example.com','hash3',550);
+INSERT INTO `users` VALUES (1,'generic1@example.com','hash1',1100,'user'),(2,'generic2@example.com','hash2',2250,'user'),(3,'generic3@example.com','hash3',550,'user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-10  1:01:43
+-- Dump completed on 2024-03-12  3:03:52
