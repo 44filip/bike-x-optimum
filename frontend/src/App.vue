@@ -32,8 +32,18 @@ export default {
         document.title = 'Bike X Optimum';
       }
     },
-  }
-  ,
+  },
+  methods: {
+    async getUsers() {
+      try {
+        const response = await fetch('localhost:8081/api/users');
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
   data() {
     return {
       navigation: [
