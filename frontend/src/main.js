@@ -8,8 +8,10 @@ import Login from './components/pages/Login.vue'
 import Register from './components/pages/Register.vue'
 import Shop from './components/pages/Shop.vue'
 import store from './store'
+import RoleDirective from "./directives/roleDirectives"
 
 Vue.config.productionTip = false
+Vue.directive("role", RoleDirective)
 
 var routes = [
   //{ path: "/cycle", component: Cycle },
@@ -52,5 +54,16 @@ window.onload = function () {
 new Vue({
   router,
   store,
+  created: function () {
+    var user = localStorage.getItem("user")
+
+    if (!user) {
+      this.$store.commit("changeUser", undefined)
+      return
+    }
+
+    this.$store.commit("changeUser", JSON.parse(user))
+  },
   render: h => h(App),
 }).$mount('#app')
+console.log(this.$store.state.cart);

@@ -1,0 +1,17 @@
+[
+    {
+        "username": "pera@gmail.com",
+        "password": "sifra1",
+        "role": "admin"
+    },
+    {
+        "username": "mika@gmail.com",
+        "password": "sifra1",
+        "role": "user"
+    },
+    {
+        "username": "zika@gmail.com",
+        "password": "sifra1",
+        "role": "moderator"
+    }
+]

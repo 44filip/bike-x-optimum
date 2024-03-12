@@ -14,10 +14,16 @@
                <li v-for="item, index in navItems" :key="index" class="nav-item">
                   <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
                </li>
+               <li  v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#" class="nav-link active">Logout</a></li>
             </ul>
             <div class="login_menu">
                <ul>
-                  <li class="numCart"><router-link to="/shop"><div class="cartF"><div><img id="cartLogo" src="/images/shopping-cart.png"></div><div class="numCart">{{ cartQuantity }}</div></div></router-link></li>
+                  <li class="numCart"><router-link to="/shop">
+                        <div class="cartF">
+                           <div><img id="cartLogo" src="/images/shopping-cart.png"></div>
+                           <div class="numCart">{{ cartQuantity }}</div>
+                        </div>
+                     </router-link></li>
                </ul>
             </div>
          </form>
@@ -38,6 +44,15 @@ export default {
       ...mapGetters([
          'cartQuantity'
       ])
+   }
+   ,
+   methods: {
+      logout() {
+         this.$store.commit("changeUser", undefined)
+         this.$router.push("/")
+         window.location.reload();
+         this.$forceUpdate()
+      }
    }
 };
 

@@ -80,7 +80,7 @@ export default {
             checkoutStatus: state => state.checkoutStatus
         }),
         totalPrice: function () {
-            return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            return this.$store.state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         }
     },
     methods: {
