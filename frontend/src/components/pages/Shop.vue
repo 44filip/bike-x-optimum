@@ -8,7 +8,7 @@
             </div>
             <div v-if="cart.length != 0" class="row" bis_skin_checked="1">
 
-                <div class="row row-cols-1 row-cols-md-3 g-4" id="row" bis_skin_checked="1">
+                <div  v-role="['user','admin']" class="row row-cols-1 row-cols-md-3 g-4" id="row" bis_skin_checked="1">
                     <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
                             @click="clearCart">Clear Cart</a></div>
                     <div class="container-fluid table-wrap" bis_skin_checked="1">
@@ -56,7 +56,9 @@
             <div v-if="cart.length === 0" id="emptyCart" bis_skin_checked="1">
                 <h2>Your shopping cart is empty!</h2>
             </div>
-
+            <div v-role="['unauthorized']" id="emptyCart" bis_skin_checked="1">
+                <h2>Please Login!</h2>
+            </div>
         </div>
 
     </div>
