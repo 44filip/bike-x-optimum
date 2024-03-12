@@ -18,34 +18,40 @@
 import Head from "./components/Head.vue"
 import Nav from "./components/Nav.vue"
 import Footer from "./components/Footer.vue"
+
 export default {
-  name: 'App',
-  components: {
+ name: 'App',
+ components: {
     Head,
     Nav,
     Footer
-  },
-  watch: {
+ },
+ watch: {
     $route: {
       immediate: true,
       handler() {
         document.title = 'Bike X Optimum';
       }
     },
-  },
-  methods: {
+ },
+ methods: {
     async getUsers() {
       try {
-        const response = await fetch('localhost:8081/api/users');
+        const response = await fetch('http://localhost:8081/api/users'); // Ensure to use http:// or https://
         const data = await response.json();
         console.log(data);
+        this.users = data; // Store the fetched users in the component's data
       } catch (error) {
         console.error(error);
       }
-    }
-  },
-  data() {
+    },
+ },
+ created() {
+    this.getUsers(); // Call the getUsers method when the component is created
+ },
+ data() {
     return {
+      users: [], // Initialize users as an empty array
       navigation: [
         {
           text: "Home",
@@ -61,7 +67,7 @@ export default {
         }
       ],
       bikes: [
-        {
+      {
           id:1,
           name: "Bike 1 - Cycle",
           img: "/images/img-1.png",
@@ -104,9 +110,8 @@ export default {
           quantity: 0
         }
       ]
-
     }
-  }
+ }
 }
 </script>
 
