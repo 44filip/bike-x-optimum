@@ -39,6 +39,11 @@ a {
     color: #1f1f1f;
     text-decoration: none !important;
     outline: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .row {
@@ -249,6 +254,11 @@ a,
 .btn {
     text-decoration: none !important;
     outline: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 img {
@@ -428,6 +438,7 @@ a :active {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
+    transition: 0.5s;
     padding-top: 60px;
 }
 
@@ -437,6 +448,7 @@ a :active {
     font-size: 25px;
     color: #818181;
     display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
@@ -452,6 +464,7 @@ a :active {
 }
 
 #main {
+    transition: margin-left .5s;
     width: 5%;
     float: right;
     text-align: right;
@@ -1203,6 +1216,10 @@ a :active {
 .zoomout img {
     height: 300px;
     width: 100%;
+    -webkit-transition: all 2s ease;
+    -moz-transition: all 2s ease;
+    -ms-transition: all 2s ease;
+    transition: all 2s ease;
 }
 
 .zoomout img:hover {
