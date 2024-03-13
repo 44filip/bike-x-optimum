@@ -8,6 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         cart: [],
+        balance: 0,
         cartEmptied: false
     },
     mutations: {
@@ -40,7 +41,13 @@ export default new Vuex.Store({
             if (index !== -1 && state.cart[index].quantity > 1) {
                 state.cart[index].quantity -= 1; // Decrement quantity, but not below 1
             }
-        }
+        },
+        setUserBalance(state, balance) {
+            state.balance = balance;
+        },
+        updateBalance(state, newBalance) {
+            state.balance = newBalance;
+        },
     },
     actions: {
         addToCart({ commit }, product) {
@@ -57,7 +64,13 @@ export default new Vuex.Store({
         },
         decrementQuantity({ commit }, item) {
             commit('decrementQuantity', item);
-        }
+        },
+        loadUserBalance({ commit }) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user && user.balance) {
+                commit('setUserBalance', user.balance);
+            }
+        },
     },
     plugins: [createPersistedState()],
     modules: {
@@ -78,6 +91,9 @@ export default new Vuex.Store({
         cartProducts: state => {
             // Assuming 'cart' is an array of products in your state
             return state.cart;
+        },
+        balance: users => {
+            return users.balance
         }
     }
 });

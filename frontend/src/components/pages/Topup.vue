@@ -19,7 +19,7 @@ export default {
     data() {
         return {
             balance: "", // The amount to add to the user's balance
-            
+
         }
     },
     methods: {
@@ -33,7 +33,11 @@ export default {
             user.balance = parseFloat(user.balance) + parseFloat(this.balance);
             console.log(user);
             // Send the updated user information to the backend
+
+            
             await this.updateUserInBackend(user);
+            window.location.reload();
+            this.$forceUpdate()
         }, async updateUserInBackend(user) {
             try {
                 console.log(user);
@@ -50,6 +54,14 @@ export default {
                 // Handle error (e.g., show error message)
             }
         },
+        updateBalance() {
+            // Example: Assume this method is called after a successful top-up operation
+            // and `newBalance` is the updated balance value.
+            const newBalance = 100; // This should be the actual new balance value
+
+            // Now, commit the new balance to the Vuex store
+            this.$store.commit('updateBalance', newBalance);
+        }
     }
 }
 </script>

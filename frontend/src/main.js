@@ -69,7 +69,8 @@ new Vue({
       return
     }
 
-    this.$store.commit("changeUser", JSON.parse(user))
+    this.$store.commit("changeUser", JSON.parse(user));
+    this.$store.dispatch('loadUserBalance');
   },
   render: h => h(App),
 }).$mount('#app')
