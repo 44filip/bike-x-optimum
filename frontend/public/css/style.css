@@ -1545,3 +1545,7 @@ td button :disabled {
     font-weight: bold;
     font-size: 20px;
 }
+.logout{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}

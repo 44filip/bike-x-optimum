@@ -8,7 +8,10 @@ import Login from './components/pages/Login.vue'
 import Register from './components/pages/Register.vue'
 import Shop from './components/pages/Shop.vue'
 import store from './store'
+import RegisterdLogin from './components/pages/RegisterdLogin.vue'
 import RoleDirective from "./directives/roleDirectives"
+import Topup from "./components/pages/Topup.vue"
+import Account from "./components/pages/Account.vue"
 
 Vue.config.productionTip = false
 Vue.directive("role", RoleDirective)
@@ -20,7 +23,10 @@ var routes = [
   { path: "/contact", component: Contact },
   { path: "/login", component: Login },
   { path: "/register", component: Register },
-  { path: "/shop", component: Shop }
+  { path: "/shop", component: Shop },
+  { path: "/registerdLogin", component: RegisterdLogin },
+  { path: "/topup", component: Topup },
+  { path: "/account", component: Account }
 
 ]
 

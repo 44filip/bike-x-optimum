@@ -8,7 +8,7 @@
             </div>
             <div v-if="cart.length != 0" class="row" bis_skin_checked="1">
 
-                <div  v-role="['user','admin']" class="row row-cols-1 row-cols-md-3 g-4" id="row" bis_skin_checked="1">
+                <div v-role="['user', 'admin']" class="row row-cols-1 row-cols-md-3 g-4" id="row" bis_skin_checked="1">
                     <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
                             @click="clearCart">Clear Cart</a></div>
                     <div class="container-fluid table-wrap" bis_skin_checked="1">
@@ -28,7 +28,7 @@
                                     <td scope="col"><img :src=item.img class="card-img-top cat-pic"></td>
                                     <td scope="col"><span style=" color: #f7c17b">$</span> <span
                                             style=" color: #325662">{{ parseFloat(
-                        item.price * item.quantity).toFixed(2) }}</span></td>
+                item.price * item.quantity).toFixed(2) }}</span></td>
                                     <td scope="col"><button class="minus" @click="decrementQuantity(item)"
                                             :disabled="item.quantity <= 1">-</button>{{ item.quantity }}<button
                                             @click="incrementQuantity(item)">+</button>
@@ -47,18 +47,18 @@
                         <!-- <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
                         totalPrice.toFixed(2) }}</p><br> -->
                         <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
-                                @click="clearCart">Checkout</a></div>
+                                @click="sendTransactionData">Checkout</a></div>
                     </div>
 
                 </div>
 
             </div>
-            <div v-role="['user','admin']" v-if="cart.length === 0" id="emptyCart" bis_skin_checked="1">
+            <div v-role="['user', 'admin']" v-if="cart.length === 0" id="emptyCart" bis_skin_checked="1">
                 <h2>Your shopping cart is empty!</h2>
             </div>
             <div v-role="['unauthorized']" id="emptyCart" bis_skin_checked="1">
                 <h2>Please log in.</h2>
-                <div class="remove_btn col-md-6"><a ><router-link to="/login">Click here!</router-link></a></div>
+                <div class="remove_btn col-md-6"><a><router-link to="/login">Click here!</router-link></a></div>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
 
@@ -100,7 +100,47 @@ export default {
         },
         decrementQuantity(item) {
             this.$store.dispatch('decrementQuantity', item);
+        },
+        async sendTransactionData() {
+            // Retrieve user ID from local storage
+            const userId = JSON.parse(localStorage.getItem('user')).userId;
+
+            // Retrieve product information from Vuex store
+            const products = this.$store.state.cart;
+            console.log(this.$store.state.cart);
+            console.log(products);
+            // Loop through each product in the cart
+            for (const product of products) {
+                // Calculate the number of transactions needed for this product
+                const numberOfTransactions = product.quantity;
+                const currentDate = new Date();
+                const formattedDate = currentDate.toISOString().replace('T', ' ').substring(0, 19);
+
+                // Send a transaction for each unit of the product
+                for (let i = 0; i < numberOfTransactions; i++) {
+                    // Prepare transaction data for each unit
+                    const transaction = {
+                        userId: userId,
+                        bikeId: product.id
+                    };
+                    console.log(userId);
+                    console.log(product.id);
+                    console.log(formattedDate);
+                    // Send transaction data to the server
+                    try {
+                        const response = await axios.post('http://localhost:8081/addTransaction', transaction);
+                        console.log("proslo");
+                        console.log(response.data);
+                        this.clearCart()
+                        // Handle successful transaction (e.g., clear cart, show success message)
+                    } catch (error) {
+                        console.error(error);
+                        // Handle error (e.g., show error message)
+                    }
+                }
+            }
         }
+
     },
     created: {
         clearCart() {

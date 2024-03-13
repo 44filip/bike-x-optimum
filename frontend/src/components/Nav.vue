@@ -15,6 +15,8 @@
                   <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
                </li>
                <li  v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link to="/login">Login</router-link></a></li>
+               <li  v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link to="/account">Account</router-link></a></li>
+               <li  v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link to="/topup">Topup</router-link></a></li>
                <li  v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#" class="nav-link active">Logout</a></li>
             </ul>
             <div class="login_menu">

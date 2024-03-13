@@ -1,21 +1,54 @@
-<template> 
+<template>
     <div class="form-grou">
         <h1>Register</h1>
-        <form class='login-form'>
+        <form class='login-form' @submit.prevent="performRegister">
             <div class="forma">
-                <input id="email" class='lf--input form-control' placeholder='E-mail' type='text'>
+                <input v-model="email" id="email" class='lf--input form-control' placeholder='E-mail' type='text'>
             </div>
             <div class="forma">
-                <input id="password" class='lf--input form-control' placeholder='Password' type='password'>
+                <input v-model="password" id="password" class='lf--input form-control' placeholder='Password'
+                    type='password'>
             </div>
             <div class="forma">
                 <input class='lf--submit form-control' type='submit' value='REGISTER'>
             </div>
         </form>
         <a class='lf--forgot'><router-link to="/login">Already have an account?<br>Login HERE</router-link></a>
+        <popup-error ref="popup"></popup-error>
     </div>
 </template>
 <script>
-    export default {
-        name: "RegisterComponent"}
+import axios from 'axios';
+import PopupError from './PopupError'
+export default {
+    name: "RegisterComponent",
+    data() {
+        return {
+            email: "",
+            password: ""
+        }
+    }, components: {
+        PopupError // Register the component
+    }
+    ,
+    methods: {
+        async performRegister() {
+            try {
+                const user = {
+                    email: this.email,
+                    password: this.password,
+                    balance: 0,
+                    role: 'user'
+                };
+                const response = await axios.post('http://localhost:8081/addUser', user);
+                console.log(response.data);
+                this.$router.push('/registerdLogin');
+                // Handle successful registration (e.g., redirect to login page)
+            } catch (error) {
+                this.$refs.popup.showPopup();
+                // Handle error (e.g., show error message)
+            }
+        }
+    }
+}
 </script>
