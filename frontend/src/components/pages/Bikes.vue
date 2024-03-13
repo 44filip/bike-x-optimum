@@ -14,9 +14,9 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div v-for="product in products" :key="product.id" class="col-md-4">
                     <div class="card">
-                        <img :src=product.img class="card-img-top" alt="img-1.png">
+                        <img :src=product.imgPath class="card-img-top" alt="img-1.png">
                         <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
+                            <h5 class="card-title">{{ product.model }}</h5>
                             <div class="btn_main">
                                 <div class="buy_bt"><a href="javascript:void(0);" @click="addToCart(product)">Add to
                                         Cart</a>
@@ -41,24 +41,41 @@
 
 <script>
 import Popup from './PopupCart'
-
+import axios from 'axios';
 import { mapGetters } from 'vuex';
 export default {
     components: {
         Popup
     },
     name: "BikesComponent",
-    props: ['products'],
+    data() {
+        return {
+            products: [] // Initialize products as an empty array
+        }
+    },
     methods: {
         addToCart(product) {
             this.$store.dispatch('addToCart', product);
             this.$refs.popup.showPopup();
+        },
+        fetchProducts() {
+            axios.get('http://localhost:8081/bikes') // Replace with your Spring Boot application's URL
+                .then(response => {
+                    this.products = response.data;
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error("There was an error!", error);
+                });
         }
     },
     computed: {
         ...mapGetters([
             'cartQuantity'
         ])
+    },
+    created() {
+        this.fetchProducts(); // Fetch products when the component is created
     }
 
 }

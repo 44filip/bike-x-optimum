@@ -36,7 +36,7 @@ export default {
                 const user = response.data;
 
                 if (user && user.password === this.password) {
-                    console.log(response.data);
+                    
                     delete user.password;
                     localStorage.setItem("user", JSON.stringify(user));
 

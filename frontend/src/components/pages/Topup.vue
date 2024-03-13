@@ -18,26 +18,32 @@ export default {
     name: "TopupComponent",
     data() {
         return {
-            balance: 0, // The amount to add to the user's balance
-            user: JSON.parse(localStorage.getItem('user')) || {}
+            balance: "", // The amount to add to the user's balance
+            
         }
     },
     methods: {
         async addToBalance() {
+            var email = JSON.parse(localStorage.getItem('user'))
+            var userEmail = email.email;
             // Update the user's balance
-            this.user.balance = parseFloat(this.user.balance) + parseFloat(this.balance);
-            console.log(this.user);
+            const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
+            var user = response.data;
+            console.log(user);
+            user.balance = parseFloat(user.balance) + parseFloat(this.balance);
+            console.log(user);
             // Send the updated user information to the backend
-            await this.updateUserInBackend();
-        }, async updateUserInBackend() {
+            await this.updateUserInBackend(user);
+        }, async updateUserInBackend(user) {
             try {
-                const response = await axios.put('http://localhost:8081/update', this.user, {
+                console.log(user);
+                const response = await axios.put('http://localhost:8081/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
                 console.log(response.data);
-                console.log("dodato");
+                console.log("funds added");
                 // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);

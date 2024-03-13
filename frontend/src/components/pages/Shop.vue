@@ -24,8 +24,8 @@
                             </thead>
                             <tbody>
                                 <tr class="shopTr" v-for="item in cart" :key="item.id">
-                                    <td scope="col">{{ item.name }}</td>
-                                    <td scope="col"><img :src=item.img class="card-img-top cat-pic"></td>
+                                    <td scope="col">{{ item.model }}</td>
+                                    <td scope="col"><img :src=item.imgPath class="card-img-top cat-pic"></td>
                                     <td scope="col"><span style=" color: #f7c17b">$</span> <span
                                             style=" color: #325662">{{ parseFloat(
                 item.price * item.quantity).toFixed(2) }}</span></td>
@@ -121,10 +121,10 @@ export default {
                     // Prepare transaction data for each unit
                     const transaction = {
                         userId: userId,
-                        bikeId: product.id
+                        bikeId: product.bikeId
                     };
                     console.log(userId);
-                    console.log(product.id);
+                    console.log(product.bikeId);
                     console.log(formattedDate);
                     // Send transaction data to the server
                     try {
