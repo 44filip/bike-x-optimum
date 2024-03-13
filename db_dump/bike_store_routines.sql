@@ -34,4 +34,4 @@ USE `bike_store`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12  7:53:02
+-- Dump completed on 2024-03-13  4:45:25
