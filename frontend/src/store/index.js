@@ -8,10 +8,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         cart: [],
+        cartEmptied: false
     },
     mutations: {
         addToCart(state, product) {
-            const index = state.cart.findIndex(cartItem => cartItem.id === product.id);
+            const index = state.cart.findIndex(cartItem => cartItem.bikeId === product.bikeId);
             if (index !== -1) {
                 state.cart[index].quantity += 1; // Increment quantity if item already exists
             } else {
@@ -20,21 +21,22 @@ export default new Vuex.Store({
         },
         emptyCart(state) {
             state.cart = [];
+            state.cartEmptied = true;
         },
         removeItem(state, item) {
-            const index = state.cart.findIndex(cartItem => cartItem.id === item.id);
+            const index = state.cart.findIndex(cartItem => cartItem.bikeId === item.bikeId);
             if (index !== -1) {
                 state.cart.splice(index, 1);
             }
         },
         incrementQuantity(state, item) {
-            const index = state.cart.findIndex(cartItem => cartItem.id === item.id);
+            const index = state.cart.findIndex(cartItem => cartItem.bikeId === item.bikeId);
             if (index !== -1) {
                 state.cart[index].quantity += 1; // Increment quantity
             }
         },
         decrementQuantity(state, item) {
-            const index = state.cart.findIndex(cartItem => cartItem.id === item.id);
+            const index = state.cart.findIndex(cartItem => cartItem.bikeId === item.bikeId);
             if (index !== -1 && state.cart[index].quantity > 1) {
                 state.cart[index].quantity -= 1; // Decrement quantity, but not below 1
             }

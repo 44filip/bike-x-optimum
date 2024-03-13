@@ -42,7 +42,7 @@ export default {
 
                     this.$store.commit("setUser", user);
 
-                    this.$router.push("/shop");
+                    this.$router.push("/");
                     window.location.reload();
                     this.$forceUpdate()
                 } else {

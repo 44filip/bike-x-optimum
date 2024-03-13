@@ -52,7 +52,7 @@ export default {
    methods: {
       logout() {
          this.$store.commit("changeUser", undefined)
-         this.$router.push("/")
+         this.$router.push("/login")
          window.location.reload();
          this.$forceUpdate()
       }

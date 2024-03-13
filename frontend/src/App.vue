@@ -20,21 +20,26 @@ import Nav from "./components/Nav.vue"
 import Footer from "./components/Footer.vue"
 
 export default {
- name: 'App',
- components: {
+  name: 'App',
+  components: {
     Head,
     Nav,
     Footer
- },
- watch: {
+  },
+  watch: {
     $route: {
       immediate: true,
       handler() {
         document.title = 'Bike X Optimum';
       }
     },
- },
- data() {
+  },
+  created() {
+    if (!this.$store.state.cartEmptied) {
+      this.$store.dispatch('emptyCart');
+    }
+  },
+  data() {
     return {
       users: [], // Initialize users as an empty array
       navigation: [
@@ -52,43 +57,43 @@ export default {
         }
       ],
       bikes: [
-      {
-          id:1,
+        {
+          id: 1,
           name: "Bike 1 - Cycle",
           img: "/images/img-1.png",
           price: 219.99,
           quantity: 0
         },
         {
-          id:2,
+          id: 2,
           name: "Bike 2 - Stylish",
           img: "/images/img-2.png",
           price: 279.99,
           quantity: 0
         },
         {
-          id:3,
+          id: 3,
           name: "Bike 3 - Modern",
           img: "/images/img-3.png",
           price: 249.99,
           quantity: 0
         },
         {
-          id:4,
+          id: 4,
           name: "Bike 4 - Classic",
           img: "/images/img-4.png",
           price: 239.99,
           quantity: 0
         },
         {
-          id:5,
+          id: 5,
           name: "Bike 5 - Supreme",
           img: "/images/img-5.png",
           price: 259.99,
           quantity: 0
         },
         {
-          id:6,
+          id: 6,
           name: "Bike 6 - Optimal",
           img: "/images/img-6.png",
           price: 299.99,
@@ -96,7 +101,7 @@ export default {
         }
       ]
     }
- }
+  }
 }
 </script>
 

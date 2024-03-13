@@ -57,6 +57,7 @@ window.onload = function () {
     }
   }
 }
+
 new Vue({
   router,
   store,
