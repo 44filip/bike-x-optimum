@@ -124,7 +124,7 @@ h6 {
 }
 
 .forma {
-    padding: 15px;
+    margin: 10px;
 }
 
 .latest-products {
@@ -1533,4 +1533,12 @@ td button :disabled {
 .logout{
     margin-top: 100px;
     margin-bottom: 50px;
+}
+
+.delacc {
+    width: 350px;
+}
+
+.changepass {
+    width: 350px;
 }

@@ -1,18 +1,20 @@
 <template>
     <div class="form-grou">
-        <h1>Change password or delete accoutn</h1>
+        <h1>Account administration</h1>
+        <p>If you wish to change your password enter it here:</p>
         <form @submit.prevent="changePassword" class='login-form'>
             <div class="forma">
                 <input v-model="password" id="password" class='lf--input form-control' placeholder='Your new password'
                     type='password'>
             </div>
-            <div class="forma">
+            <div class="forma changepass">
                 <input class='lf--submit form-control' type='submit' value='CHANGE PASSWORD'>
             </div>
         </form>
+        <p>If you wish to terminate your account press here:</p>
         <form @submit.prevent="deleteAccount" class='login-form'>
-            <div class="forma">
-                <input class='logout lf--submit form-control' type='submit' value='DELETE ACCOUNT'>
+            <div class="forma delacc">
+                <input class='lf--submit form-control' type='submit' value='DELETE ACCOUNT'>
             </div>
         </form>
     </div>
