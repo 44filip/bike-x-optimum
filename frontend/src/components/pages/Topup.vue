@@ -1,15 +1,17 @@
 <template>
-    <div class="form-grou">
-        <h1>Top-up</h1>
-        <form @submit.prevent="addToBalance" class='login-form'>
-            <div class="forma">
-                <input v-model="balance" id="balance" class='lf--input form-control' placeholder='Amount to add $'
-                    type='text'>
-            </div>
-            <div class="forma">
-                <input class='lf--submit form-control' type='submit' value='ADD TO BALANCE'>
-            </div>
-        </form>
+    <div class ="page-size">
+        <div class="form-grou">
+            <h1>Top-up</h1>
+            <form @submit.prevent="addToBalance" class='login-form'>
+                <div class="forma">
+                    <input v-model="balance" id="balance" class='lf--input form-control' placeholder='Amount to add $'
+                        type='text'>
+                </div>
+                <div class="forma">
+                    <input class='lf--submit form-control' type='submit' value='ADD TO BALANCE'>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 <script>

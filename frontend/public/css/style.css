@@ -1542,3 +1542,7 @@ td button :disabled {
 .changepass {
     width: 350px;
 }
+
+.page-size {
+    height: 45vh;
+}
