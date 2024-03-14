@@ -55,50 +55,6 @@ export default {
           text: "Contact",
           path: "/contact"
         }
-      ],
-      bikes: [
-        {
-          id: 1,
-          name: "Bike 1 - Cycle",
-          img: "/images/img-1.png",
-          price: 219.99,
-          quantity: 0
-        },
-        {
-          id: 2,
-          name: "Bike 2 - Stylish",
-          img: "/images/img-2.png",
-          price: 279.99,
-          quantity: 0
-        },
-        {
-          id: 3,
-          name: "Bike 3 - Modern",
-          img: "/images/img-3.png",
-          price: 249.99,
-          quantity: 0
-        },
-        {
-          id: 4,
-          name: "Bike 4 - Classic",
-          img: "/images/img-4.png",
-          price: 239.99,
-          quantity: 0
-        },
-        {
-          id: 5,
-          name: "Bike 5 - Supreme",
-          img: "/images/img-5.png",
-          price: 259.99,
-          quantity: 0
-        },
-        {
-          id: 6,
-          name: "Bike 6 - Optimal",
-          img: "/images/img-6.png",
-          price: 299.99,
-          quantity: 0
-        }
       ]
     }
   }
