@@ -4,7 +4,7 @@
             <h1>Top-up</h1>
             <form @submit.prevent="addToBalance" class='login-form'>
                 <div class="forma">
-                    <input v-model="balance" id="balance" class='lf--input form-control' placeholder='Amount to add $'
+                    <input v-model="balance" id="balance" class='lf--input form-control' placeholder='Amount to add ($)'
                         type='text'>
                 </div>
                 <div class="forma">
