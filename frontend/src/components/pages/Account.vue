@@ -52,14 +52,12 @@ export default {
         async changePassword() {
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
-            // Update the user's balance
             const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
             var user = response.data;
             console.log(user.password);
             user.password = this.password;
             console.log(this.password);
             console.log(user);
-            this.logout();
             // Send the updated user information to the backend
 
 
@@ -79,6 +77,7 @@ export default {
                 console.error(error);
                 // Handle error (e.g., show error message)
             }
+            this.logout();
         },
         logout() {
             this.$store.commit("changeUser", undefined)

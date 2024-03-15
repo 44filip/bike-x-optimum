@@ -55,6 +55,7 @@ export default {
                     this.$router.push("/");
                     window.location.reload();
                     this.$forceUpdate()
+                    this.balance.$forceUpdate()
                 } else {
                     console.log("Invalid email or password.");
                 }
