@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   CONSTRAINT `chk_role_values` CHECK ((`role` in (_utf8mb4'admin',_utf8mb4'user')))
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'generic1@example.com','pass1',1100,'admin'),(2,'generic2@example.com','pass2',2250,'user'),(3,'generic3@example.com','pass3',550,'user'),(4,'generic4@example.com','pass4',3800,'user'),(5,'generic5@example.com','pass5',900,'user');
+INSERT INTO `users` VALUES (1,'generic1@example.com','pass1',900,'admin'),(2,'generic2@example.com','pass2',2550,'user'),(3,'generic3@example.com','pass3',1600,'user'),(4,'generic4@example.com','pass4',3800,'user'),(5,'generic5@example.com','pass5',1000,'user'),(6,'generic6@example.com','pass6',2150,'user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-13  4:45:25
+-- Dump completed on 2024-03-15  8:03:28
