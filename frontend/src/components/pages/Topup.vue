@@ -1,7 +1,7 @@
 <template>
     <div class="page-size">
         <div class="form-grou">
-            <h1>Top-up</h1>
+            <h1>Topup</h1>
             <form @submit.prevent="addToBalance" class='login-form'>
                 <div class="forma">
                     <input v-model="balance" id="balance" class='lf--input form-control' placeholder='Amount to add ($)'
@@ -63,7 +63,7 @@ export default {
             }
         },
         updateBalance() {
-            // Example: Assume this method is called after a successful top-up operation
+            // Example: Assume this method is called after a successful topup operation
             // and `newBalance` is the updated balance value.
             const newBalance = 100; // This should be the actual new balance value
 

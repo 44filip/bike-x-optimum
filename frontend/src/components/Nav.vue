@@ -19,7 +19,7 @@
                <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
                         to="/account">Account</router-link></a></li>
                <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
-                        class="gas" to="/topup">Top-up&nbsp;<div>(${{ formattedBalance }})</div></router-link></a></li>
+                        class="gas" to="/topup">Topup&nbsp;<div>(${{ formattedBalance }})</div></router-link></a></li>
                <li v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#"
                      class="nav-link active">Logout</a></li>
             </ul>
