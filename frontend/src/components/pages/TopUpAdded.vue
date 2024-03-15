@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             show: false,
-            message: 'Balance Changed!',
+            message: 'Balance added!',
             timeoutId: null, // Initialize timeoutId in the data
         };
     },

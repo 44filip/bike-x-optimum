@@ -1215,6 +1215,7 @@ a :active {
 }
 .gas{
     display: flex!important;
+    word-break: keep-all;
 }
 .box_main_1:hover .post_text {
     color: #000;

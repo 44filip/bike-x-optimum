@@ -1,7 +1,7 @@
 <template>
     <div class="page-size">
         <div class="form-grou">
-            <h1 v-if="showSpecialDiv">You changed your password please login again</h1>
+            <h1 v-if="showSpecialDiv">Your password has been successfully changed.</h1>
             <h1>Login</h1>
             <form class='login-form' @submit.prevent="performLogin">
                 <div class="forma">
