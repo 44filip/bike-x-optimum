@@ -6,45 +6,58 @@
             <span class="text-muted">Toggleable via the navbar brand.</span>
          </div>
       </div>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-         <a class="logo"><router-link to="/"><img src="images/logo.png"></router-link></a>
 
-         <form class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-auto">
-               <li v-for="item, index in navItems" :key="index" class="nav-item">
-                  <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
-               </li>
-               <li v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link
-                        to="/login">Login</router-link></a></li>
-               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
-                        to="/account">Account</router-link></a></li>
-               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
-                        class="gas" to="/topup">Topup&nbsp;<div>(${{ formattedBalance }})</div></router-link></a></li>
-               <li v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#"
-                     class="nav-link active">Logout</a></li>
-            </ul>
-            <div class="login_menu">
-               <ul>
-                  <li class="numCart"><router-link to="/shop">
-                        <div class="cartF">
-                           <div><img id="cartLogo" src="/images/shopping-cart.png"></div>
-                           <div class="numCart">{{ cartQuantity }}</div>
-                        </div>
-                     </router-link></li>
-               </ul>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+         <div class="container-fluid">
+            <a class="logo"><router-link to="/"><img src="images/logo.png"></router-link></a>
+
+            <button @click="toggleNavbar" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+               data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+               aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div :class="{ 'collapse': !navbarOpen, 'navbar-collapse .bg-white': navbarOpen }" id="navbarNav">
+               <form class="form-inline my-2 my-lg-0">
+                  <ul class="navbar-nav mr-auto" style="background-color: white;">
+                     <li v-for="item, index in navItems" :key="index" class="nav-item">
+                        <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
+                     </li>
+                     <li v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link
+                              to="/login">Login</router-link></a></li>
+                     <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
+                              to="/account">Account</router-link></a></li>
+                     <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
+                              class="gas" to="/topup">Topup&nbsp;<div>(${{ formattedBalance }})</div></router-link></a>
+                     </li>
+                     <li v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#"
+                           class="nav-link active">Logout</a></li>
+                  </ul>
+                  <div class="login_menu">
+                     <ul>
+                        <li class="numCart"><router-link to="/shop">
+                              <div class="cartF">
+                                 <div><img id="cartLogo" src="/images/shopping-cart.png"></div>
+                                 <div class="numCart">{{ cartQuantity }}</div>
+                              </div>
+                           </router-link></li>
+                     </ul>
+                  </div>
+               </form>
             </div>
-         </form>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
+         </div>
       </nav>
+
    </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 export default {
+   data() {
+      return {
+         navbarOpen: false, // Initial state, set to false to have the navbar collapsed by default
+      };
+   },
    name: "NavComponent",
    props: ["navItems"],
    computed: {
@@ -61,6 +74,9 @@ export default {
          this.$router.push("/login")
          window.location.reload();
          this.balance.$forceUpdate()
+      },
+      toggleNavbar() {
+         this.navbarOpen = !this.navbarOpen;
       }
    }
 };
