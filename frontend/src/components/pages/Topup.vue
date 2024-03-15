@@ -38,7 +38,7 @@ export default {
             const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
             var user = response.data;
             console.log(user);
-            user.balance = parseFloat(user.balance) + parseFloat(this.balance);
+            user.balance = (parseFloat(user.balance) + parseFloat(this.balance)).toFixed(2);
             console.log(user);
             // Send the updated user information to the backend
 

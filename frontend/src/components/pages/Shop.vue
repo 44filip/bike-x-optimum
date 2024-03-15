@@ -110,7 +110,7 @@ export default {
             console.log(user);
             console.log(user.balance);
             console.log(this.totalPrice);
-            user.balance = parseFloat(user.balance) - parseFloat(this.totalPrice);
+            user.balance = (parseFloat(user.balance) - parseFloat(this.totalPrice)).toFixed(2);
 
             // Send the updated user information to the backend
 
