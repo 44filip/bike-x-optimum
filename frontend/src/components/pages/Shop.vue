@@ -47,7 +47,7 @@
                         <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
                 totalPrice.toFixed(2) }}</p><br>
                         <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
-                                @click="sendTransactionData(); removeFromBalance();">Checkout</a></div>
+                                @click="sendTransactionData">Checkout</a></div>
                     </div>
 
                 </div>
@@ -108,8 +108,10 @@ export default {
             const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
             var user = response.data;
             console.log(user);
+            console.log(user.balance);
+            console.log(this.totalPrice);
             user.balance = parseFloat(user.balance) - parseFloat(this.totalPrice);
-            console.log(user);
+
             // Send the updated user information to the backend
 
 
@@ -148,6 +150,7 @@ export default {
                     // Send transaction data to the server
                     try {
                         const response = await axios.post('http://localhost:8081/addTransaction', transaction);
+                        this.removeFromBalance();
                         console.log("proslo");
                         console.log(response.data);
                         // Handle successful transaction (e.g., clear cart, show success message)
