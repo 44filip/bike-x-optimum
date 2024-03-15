@@ -56,6 +56,7 @@ export default {
                 console.log("funds added");
                 this.$store.commit('updateBalance', user.balance);
                 this.$refs.TopUpAdded.showPopup();
+                localStorage.setItem('user', JSON.stringify(user));
                 // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);

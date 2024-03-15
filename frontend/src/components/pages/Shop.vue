@@ -191,6 +191,7 @@ export default {
                 console.log(response.data);
                 console.log("funds added");
                 this.$store.commit('updateBalance', user.balance);
+                localStorage.setItem('user', JSON.stringify(user));
                 // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);
