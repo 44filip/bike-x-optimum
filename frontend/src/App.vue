@@ -6,8 +6,7 @@
     <body>
       <Nav :navItems="navigation" />
       <main>
-        <router-view :products="bikes"></router-view>
-
+        <router-view></router-view>
       </main>
       <Footer />
     </body>
