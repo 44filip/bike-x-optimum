@@ -14,10 +14,14 @@
                <li v-for="item, index in navItems" :key="index" class="nav-item">
                   <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
                </li>
-               <li  v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link to="/login">Login</router-link></a></li>
-               <li  v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link to="/account">Account</router-link></a></li>
-               <li  v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link class="gas" to="/topup">Topup<div>(${{ balance }})</div></router-link></a></li>
-               <li  v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#" class="nav-link active">Logout</a></li>
+               <li v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link
+                        to="/login">Login</router-link></a></li>
+               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
+                        to="/account">Account</router-link></a></li>
+               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
+                        class="gas" to="/topup">Topup<div>(${{ formattedBalance  }})</div></router-link></a></li>
+               <li v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#"
+                     class="nav-link active">Logout</a></li>
             </ul>
             <div class="login_menu">
                <ul>
@@ -47,8 +51,11 @@ export default {
       ...mapGetters([
          'cartQuantity',
          'balance'
-      ])
-   },methods: {
+      ]), formattedBalance: function () {
+         // Use toFixed(2) to round the balance to two decimal places
+         return parseFloat(this.balance).toFixed(2);
+      }
+   }, methods: {
       logout() {
          this.$store.commit("changeUser", undefined)
          this.$router.push("/login")

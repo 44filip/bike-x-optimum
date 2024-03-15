@@ -1,10 +1,12 @@
 <template>
     <div class="page-size">
         <div class="form-grou">
+            <h1 v-if="showSpecialDiv">You changed your password please login again</h1>
             <h1>Login</h1>
             <form class='login-form' @submit.prevent="performLogin">
                 <div class="forma">
-                    <input v-model="username" id="email" class='lf--input form-control' placeholder='E-mail' type='text'>
+                    <input v-model="username" id="email" class='lf--input form-control' placeholder='E-mail'
+                        type='text'>
                 </div>
                 <div class="forma">
                     <input v-model="password" id="password" class='lf--input form-control' placeholder='Password'
@@ -28,7 +30,13 @@ export default {
         return {
             error: "",
             username: "",
-            password: ""
+            password: "",
+            showSpecialDiv: false
+        }
+    },
+    created() {
+        if (this.$route.query.fromSpecificPage) {
+            this.showSpecialDiv = true;
         }
     },
     methods: {
@@ -38,7 +46,7 @@ export default {
                 const user = response.data;
 
                 if (user && user.password === this.password) {
-                    
+
                     delete user.password;
                     localStorage.setItem("user", JSON.stringify(user));
 

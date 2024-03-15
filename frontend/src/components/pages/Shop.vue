@@ -44,10 +44,10 @@
 
                     </div>
                     <div class="checkout">
-                        <!-- <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
-                        totalPrice.toFixed(2) }}</p><br> -->
+                        <p v-if="cart.length != 0">Total Price: <span style=color:#f7c17b>$ </span>{{
+                totalPrice.toFixed(2) }}</p><br>
                         <div v-if="cart.length != 0" class="remove_btn col-md-6"><a href="javascript:void(0);"
-                                @click="sendTransactionData">Checkout</a></div>
+                                @click="sendTransactionData(); removeFromBalance();">Checkout</a></div>
                     </div>
 
                 </div>
@@ -82,9 +82,9 @@ export default {
         ...mapState('cart', {
             checkoutStatus: state => state.checkoutStatus
         }),
-        // totalPrice: function () {
-        //     return this.$store.state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        // }
+        totalPrice: function () {
+            return this.$store.state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        }
     },
     methods: {
 
@@ -101,6 +101,21 @@ export default {
         decrementQuantity(item) {
             this.$store.dispatch('decrementQuantity', item);
         },
+        async removeFromBalance() {
+            var email = JSON.parse(localStorage.getItem('user'))
+            var userEmail = email.email;
+            // Update the user's balance
+            const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
+            var user = response.data;
+            console.log(user);
+            user.balance = parseFloat(user.balance) - parseFloat(this.totalPrice);
+            console.log(user);
+            // Send the updated user information to the backend
+
+
+            await this.updateUserInBackend(user);
+        }
+        ,
         async sendTransactionData() {
             // Retrieve user ID from local storage
             const userId = JSON.parse(localStorage.getItem('user')).userId;
@@ -109,6 +124,10 @@ export default {
             const products = this.$store.state.cart;
             console.log(this.$store.state.cart);
             console.log(products);
+
+            // Calculate the total price of items in the cart
+            const totalPrice = products.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
             // Loop through each product in the cart
             for (const product of products) {
                 // Calculate the number of transactions needed for this product
@@ -131,13 +150,51 @@ export default {
                         const response = await axios.post('http://localhost:8081/addTransaction', transaction);
                         console.log("proslo");
                         console.log(response.data);
-                        this.clearCart()
                         // Handle successful transaction (e.g., clear cart, show success message)
                     } catch (error) {
                         console.error(error);
                         // Handle error (e.g., show error message)
                     }
                 }
+            }
+
+            // Deduct the total price from the user's balance
+            var email = JSON.parse(localStorage.getItem('user'))
+            var userEmail = email.email;
+            const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`);
+            var user = response.data;
+            user.balance = parseFloat(user.balance) - parseFloat(totalPrice);
+
+            // Update the user's balance in the backend
+            try {
+                const responseBalance = await axios.put('http://localhost:8081/update', user, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log("proslo");
+                console.log(responseBalance.data);
+                this.clearCart(); // Clear the cart after successful transaction
+            } catch (error) {
+                console.error(error);
+                // Handle error (e.g., show error message)
+            }
+        },
+        async updateUserInBackend(user) {
+            try {
+                console.log(user);
+                const response = await axios.put('http://localhost:8081/update', user, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log(response.data);
+                console.log("funds added");
+                this.$store.commit('updateBalance', user.balance);
+                // Handle successful update (e.g., show success message)
+            } catch (error) {
+                console.error(error);
+                // Handle error (e.g., show error message)
             }
         }
 

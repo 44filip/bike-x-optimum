@@ -1,5 +1,5 @@
 <template>
-    <div class ="page-size">
+    <div class="page-size">
         <div class="form-grou">
             <h1>Top-up</h1>
             <form @submit.prevent="addToBalance" class='login-form'>
@@ -12,10 +12,12 @@
                 </div>
             </form>
         </div>
+        <TopUpAdded class="TopUpAdded" ref="TopUpAdded"></TopUpAdded>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import TopUpAdded from './TopUpAdded.vue';
 export default {
     name: "TopupComponent",
     data() {
@@ -24,6 +26,10 @@ export default {
 
         }
     },
+    components:{
+        TopUpAdded
+    }
+    ,
     methods: {
         async addToBalance() {
             var email = JSON.parse(localStorage.getItem('user'))
@@ -36,10 +42,8 @@ export default {
             console.log(user);
             // Send the updated user information to the backend
 
-            
+
             await this.updateUserInBackend(user);
-            window.location.reload();
-            this.$forceUpdate()
         }, async updateUserInBackend(user) {
             try {
                 console.log(user);
@@ -50,6 +54,8 @@ export default {
                 });
                 console.log(response.data);
                 console.log("funds added");
+                this.$store.commit('updateBalance', user.balance);
+                this.$refs.TopUpAdded.showPopup();
                 // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);

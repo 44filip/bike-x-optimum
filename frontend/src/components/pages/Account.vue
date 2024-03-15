@@ -59,6 +59,7 @@ export default {
             user.password = this.password;
             console.log(this.password);
             console.log(user);
+            this.logout();
             // Send the updated user information to the backend
 
 
@@ -78,6 +79,12 @@ export default {
                 console.error(error);
                 // Handle error (e.g., show error message)
             }
+        },
+        logout() {
+            this.$store.commit("changeUser", undefined)
+            this.$router.push({ path: '/login', query: { fromSpecificPage: true } });
+            window.location.reload();
+            this.balance.$forceUpdate()
         }
 
     }
