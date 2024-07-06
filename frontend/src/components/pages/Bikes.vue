@@ -11,6 +11,7 @@
             </div>
         </div>
         <div class="container">
+            <input id="searchBar" type="text" v-model="searchQuery" placeholder="Search for products...">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div v-for="product in products" :key="product.id" class="col-md-4">
                     <div class="card">
@@ -32,6 +33,9 @@
                         </div>
                     </div>
                 </div>
+                <div v-if="products == 0" id="emptyCart" bis_skin_checked="1">
+                    <h2>There are no matching items!</h2>
+                </div>
                 <popup class="popup" ref="popup"></popup>
             </div>
         </div>
@@ -50,7 +54,8 @@ export default {
     name: "BikesComponent",
     data() {
         return {
-            products: [] // Initialize products as an empty array
+            products: [],
+            searchQuery: ''
         }
     },
     methods: {
@@ -61,7 +66,9 @@ export default {
         fetchProducts() {
             axios.get('http://localhost:8081/bikes') // Replace with your Spring Boot application's URL
                 .then(response => {
-                    this.products = response.data;
+                    this.products = response.data.filter(product =>
+                        product.model.toLowerCase().includes(this.searchQuery.toLowerCase())
+                    );
                     console.log(response.data);
                 })
                 .catch(error => {
@@ -76,6 +83,11 @@ export default {
     },
     created() {
         this.fetchProducts(); // Fetch products when the component is created
+    },
+    watch: {
+        searchQuery() {
+            this.fetchProducts();
+        }
     }
 
 }

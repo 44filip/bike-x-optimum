@@ -1547,3 +1547,6 @@ td button :disabled {
 .page-size {
     height: 45vh;
 }
+#searchBar{
+    margin-left: 12px;
+}

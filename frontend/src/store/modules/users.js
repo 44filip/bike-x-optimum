@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-// Modify getAllUsers to accept the context object
 const getAllUsers = async (context) => {
     try {
         const response = await axios.get('http://localhost:8081/users');
-        // Use context.commit to call a mutation
         console.log(response.data);
         context.commit('setUsers', response.data);
         
