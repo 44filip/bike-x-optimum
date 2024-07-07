@@ -12,12 +12,12 @@ import RegisterdLogin from './components/pages/RegisterdLogin.vue'
 import RoleDirective from "./directives/roleDirectives"
 import Topup from "./components/pages/Topup.vue"
 import Account from "./components/pages/Account.vue"
+import Admin from "./components/pages/Admin.vue"
 
 Vue.config.productionTip = false
 Vue.directive("role", RoleDirective)
 
 var routes = [
-  //{ path: "/cycle", component: Cycle },
   { path: "/", component: Cycle },
   { path: "/bikes", component: Bikes },
   { path: "/contact", component: Contact },
@@ -26,7 +26,8 @@ var routes = [
   { path: "/shop", component: Shop },
   { path: "/registerdLogin", component: RegisterdLogin },
   { path: "/topup", component: Topup },
-  { path: "/account", component: Account }
+  { path: "/account", component: Account },
+  { path: "/admin", component: Admin }
 
 ]
 
@@ -45,7 +46,6 @@ var router = new VueRouter({
 Vue.use(VueRouter)
 window.onload = function () {
   if (!localStorage.getItem('vuex')) {
-    // If the key does not exist, set the initial value
     localStorage.setItem('vuex', JSON.stringify({ "cart": [] }));
   }
   if (window.localStorage) {

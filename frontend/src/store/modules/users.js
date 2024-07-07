@@ -60,7 +60,7 @@ export default {
         }
     },
     actions: {
-        fetchUsers(context) { // Pass the context object to getAllUsers
+        fetchUsers(context) {
             getAllUsers(context);
         },
         authenticateUser(context, credentials) {

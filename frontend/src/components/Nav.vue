@@ -16,6 +16,8 @@
                </li>
                <li v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link
                         to="/login">Login</router-link></a></li>
+               <!-- <li v-role="['admin']" class="nav-item"><a href="#" class="nav-link active"><router-link
+                        to="/admin">Admin</router-link></a></li> -->
                <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
                         to="/account">Account</router-link></a></li>
                <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
@@ -52,7 +54,6 @@ export default {
          'cartQuantity',
          'balance'
       ]), formattedBalance: function () {
-         // Use toFixed(2) to round the balance to two decimal places
          return parseFloat(this.balance).toFixed(2);
       }
    }, methods: {

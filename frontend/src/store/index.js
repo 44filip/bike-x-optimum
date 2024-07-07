@@ -15,9 +15,9 @@ export default new Vuex.Store({
         addToCart(state, product) {
             const index = state.cart.findIndex(cartItem => cartItem.bikeId === product.bikeId);
             if (index !== -1) {
-                state.cart[index].quantity += 1; // Increment quantity if item already exists
+                state.cart[index].quantity += 1;
             } else {
-                state.cart.push({ ...product, quantity: 1 }); // Add new item with quantity 1
+                state.cart.push({ ...product, quantity: 1 });
             }
         },
         emptyCart(state) {
@@ -33,13 +33,13 @@ export default new Vuex.Store({
         incrementQuantity(state, item) {
             const index = state.cart.findIndex(cartItem => cartItem.bikeId === item.bikeId);
             if (index !== -1) {
-                state.cart[index].quantity += 1; // Increment quantity
+                state.cart[index].quantity += 1;
             }
         },
         decrementQuantity(state, item) {
             const index = state.cart.findIndex(cartItem => cartItem.bikeId === item.bikeId);
             if (index !== -1 && state.cart[index].quantity > 1) {
-                state.cart[index].quantity -= 1; // Decrement quantity, but not below 1
+                state.cart[index].quantity -= 1;
             }
         },
         setUserBalance(state, balance) {
@@ -89,7 +89,7 @@ export default new Vuex.Store({
             return state.cart.reduce((total, item) => total + item.quantity, 0);
         },
         cartProducts: state => {
-            // Assuming 'cart' is an array of products in your state
+            
             return state.cart;
         },
         balance: state => state.balance,

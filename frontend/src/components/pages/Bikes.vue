@@ -64,7 +64,7 @@ export default {
             this.$refs.popup.showPopup();
         },
         fetchProducts() {
-            axios.get('http://localhost:8081/bikes') // Replace with your Spring Boot application's URL
+            axios.get('http://localhost:8081/bikes')
                 .then(response => {
                     this.products = response.data.filter(product =>
                         product.model.toLowerCase().includes(this.searchQuery.toLowerCase())
@@ -82,7 +82,7 @@ export default {
         ])
     },
     created() {
-        this.fetchProducts(); // Fetch products when the component is created
+        this.fetchProducts();
     },
     watch: {
         searchQuery() {

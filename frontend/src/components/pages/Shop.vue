@@ -104,7 +104,6 @@ export default {
         async removeFromBalance() {
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
-            // Update the user's balance
             const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
             var user = response.data;
             console.log(user);
@@ -112,34 +111,26 @@ export default {
             console.log(this.totalPrice);
             user.balance = (parseFloat(user.balance) - parseFloat(this.totalPrice)).toFixed(2);
 
-            // Send the updated user information to the backend
 
 
             await this.updateUserInBackend(user);
         }
         ,
         async sendTransactionData() {
-            // Retrieve user ID from local storage
             const userId = JSON.parse(localStorage.getItem('user')).userId;
 
-            // Retrieve product information from Vuex store
             const products = this.$store.state.cart;
             console.log(this.$store.state.cart);
             console.log(products);
 
-            // Calculate the total price of items in the cart
             const totalPrice = products.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-            // Loop through each product in the cart
             for (const product of products) {
-                // Calculate the number of transactions needed for this product
                 const numberOfTransactions = product.quantity;
                 const currentDate = new Date();
                 const formattedDate = currentDate.toISOString().replace('T', ' ').substring(0, 19);
 
-                // Send a transaction for each unit of the product
                 for (let i = 0; i < numberOfTransactions; i++) {
-                    // Prepare transaction data for each unit
                     const transaction = {
                         userId: userId,
                         bikeId: product.bikeId
@@ -147,28 +138,23 @@ export default {
                     console.log(userId);
                     console.log(product.bikeId);
                     console.log(formattedDate);
-                    // Send transaction data to the server
                     try {
                         const response = await axios.post('http://localhost:8081/addTransaction', transaction);
                         this.removeFromBalance();
                         console.log("proslo");
                         console.log(response.data);
-                        // Handle successful transaction (e.g., clear cart, show success message)
                     } catch (error) {
                         console.error(error);
-                        // Handle error (e.g., show error message)
                     }
                 }
             }
 
-            // Deduct the total price from the user's balance
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
             const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`);
             var user = response.data;
             user.balance = parseFloat(user.balance) - parseFloat(totalPrice);
 
-            // Update the user's balance in the backend
             try {
                 const responseBalance = await axios.put('http://localhost:8081/update', user, {
                     headers: {
@@ -177,10 +163,9 @@ export default {
                 });
                 console.log("proslo");
                 console.log(responseBalance.data);
-                this.clearCart(); // Clear the cart after successful transaction
+                this.clearCart();
             } catch (error) {
                 console.error(error);
-                // Handle error (e.g., show error message)
             }
         },
         async updateUserInBackend(user) {
@@ -195,10 +180,8 @@ export default {
                 console.log("funds added");
                 this.$store.commit('updateBalance', user.balance);
                 localStorage.setItem('user', JSON.stringify(user));
-                // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);
-                // Handle error (e.g., show error message)
             }
         }
 

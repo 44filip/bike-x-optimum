@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      users: [], // Initialize users as an empty array
+      users: [],
       navigation: [
         {
           text: "Home",

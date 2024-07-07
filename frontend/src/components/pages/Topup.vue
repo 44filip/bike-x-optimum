@@ -22,7 +22,7 @@ export default {
     name: "TopupComponent",
     data() {
         return {
-            balance: "", // The amount to add to the user's balance
+            balance: "",
 
         }
     },
@@ -34,13 +34,11 @@ export default {
         async addToBalance() {
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
-            // Update the user's balance
             const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
             var user = response.data;
             console.log(user);
             user.balance = (parseFloat(user.balance) + parseFloat(this.balance)).toFixed(2);
             console.log(user);
-            // Send the updated user information to the backend
 
 
             await this.updateUserInBackend(user);
@@ -57,18 +55,13 @@ export default {
                 this.$store.commit('updateBalance', user.balance);
                 this.$refs.TopUpAdded.showPopup();
                 localStorage.setItem('user', JSON.stringify(user));
-                // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);
-                // Handle error (e.g., show error message)
             }
         },
         updateBalance() {
-            // Example: Assume this method is called after a successful topup operation
-            // and `newBalance` is the updated balance value.
-            const newBalance = 100; // This should be the actual new balance value
+            const newBalance = 100;
 
-            // Now, commit the new balance to the Vuex store
             this.$store.commit('updateBalance', newBalance);
         }
     }

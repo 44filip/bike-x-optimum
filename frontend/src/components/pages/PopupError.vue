@@ -11,18 +11,16 @@ export default {
         return {
             show: false,
             message: 'Account with this email already exists!',
-            timeoutId: null, // Initialize timeoutId in the data
+            timeoutId: null
         };
     },
     methods: {
         showPopup() {
             this.show = true;
-            // Clear any existing timeout
             clearTimeout(this.timeoutId);
-            // Set a new timeout
             this.timeoutId = setTimeout(() => {
                 this.show = false;
-            }, 1500); // Hide after 1 second
+            }, 1500);
         },
     },
 };

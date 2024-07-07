@@ -30,7 +30,7 @@ export default {
             password: ""
         }
     }, components: {
-        PopupError // Register the component
+        PopupError
     }
     ,
     methods: {
@@ -45,10 +45,8 @@ export default {
                 const response = await axios.post('http://localhost:8081/addUser', user);
                 console.log(response.data);
                 this.$router.push('/registerdLogin');
-                // Handle successful registration (e.g., redirect to login page)
             } catch (error) {
                 this.$refs.popup.showPopup();
-                // Handle error (e.g., show error message)
             }
         }
     }

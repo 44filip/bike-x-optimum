@@ -27,7 +27,7 @@ export default {
     data() {
         return {
             password: "",
-            userId: JSON.parse(localStorage.getItem('user')).userId // Assuming the user object has an 'id' property
+            userId: JSON.parse(localStorage.getItem('user')).userId
         }
     },
     methods: {
@@ -42,11 +42,8 @@ export default {
 
                 console.log(response.data);
                 console.log("obrisan");
-
-                // Handle successful deletion (e.g., log out and redirect)
             } catch (error) {
                 console.error(error);
-                // Handle error (e.g., show error message)
             }
         },
         async changePassword() {
@@ -58,7 +55,6 @@ export default {
             user.password = this.password;
             console.log(this.password);
             console.log(user);
-            // Send the updated user information to the backend
 
 
             await this.changePasswordInBackend(user);
@@ -72,10 +68,8 @@ export default {
                 });
                 console.log(response.data);
                 console.log("password changed");
-                // Handle successful update (e.g., show success message)
             } catch (error) {
                 console.error(error);
-                // Handle error (e.g., show error message)
             }
             this.logout();
         },
