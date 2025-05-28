@@ -33,7 +33,7 @@
       <!-- copyright section start -->
       <div class="copyright_section">
          <div class="container">
-            <p class="copyright_text">Copyright &copy; 2024 - Bike X Optimum - </p>
+            <p class="copyright_text">Copyright &copy; 2025 - Bike X Optimum - </p>
          </div>
       </div>
       <a href="https://www.flaticon.com/free-icons/document" title="document icons"></a>
