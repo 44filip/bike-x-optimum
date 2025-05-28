@@ -1,6 +1,6 @@
 # Database
-Import the data found in /db_dump to your relational database of choice (project
-choice is MySQL).
+Import the data found in /db_dump (cannot delete users with transactions) or /db_dump_cascade (deletes users alongside their transactions) to your relational database of choice (project
+choice is MySQL). 
 # Frontend
 Through a terminal, navigate to .\frontend\ by typing “cd .\frontend” then execute the
 following commands in order.
