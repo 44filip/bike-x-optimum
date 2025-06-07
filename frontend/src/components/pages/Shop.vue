@@ -104,7 +104,7 @@ export default {
         async removeFromBalance() {
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
-            const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
+            const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
             var user = response.data;
             console.log(user);
             console.log(user.balance);
@@ -139,7 +139,7 @@ export default {
                     console.log(product.bikeId);
                     console.log(formattedDate);
                     try {
-                        const response = await axios.post('http://localhost:8081/addTransaction', transaction);
+                        const response = await axios.post('https://localhost:8443/addTransaction', transaction);
                         this.removeFromBalance();
                         console.log("proslo");
                         console.log(response.data);
@@ -151,12 +151,12 @@ export default {
 
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
-            const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`);
+            const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`);
             var user = response.data;
             user.balance = parseFloat(user.balance) - parseFloat(totalPrice);
 
             try {
-                const responseBalance = await axios.put('http://localhost:8081/update', user, {
+                const responseBalance = await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -171,7 +171,7 @@ export default {
         async updateUserInBackend(user) {
             try {
                 console.log(user);
-                const response = await axios.put('http://localhost:8081/update', user, {
+                const response = await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

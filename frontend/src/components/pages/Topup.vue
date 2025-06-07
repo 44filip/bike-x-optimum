@@ -34,7 +34,7 @@ export default {
         async addToBalance() {
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
-            const response = await axios.get(`http://localhost:8081/user/email/${userEmail}`)
+            const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
             var user = response.data;
             console.log(user);
             user.balance = (parseFloat(user.balance) + parseFloat(this.balance)).toFixed(2);
@@ -45,7 +45,7 @@ export default {
         }, async updateUserInBackend(user) {
             try {
                 console.log(user);
-                const response = await axios.put('http://localhost:8081/update', user, {
+                const response = await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

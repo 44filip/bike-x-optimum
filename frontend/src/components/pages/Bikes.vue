@@ -64,7 +64,7 @@ export default {
             this.$refs.popup.showPopup();
         },
         fetchProducts() {
-            axios.get('http://localhost:8081/bikes')
+            axios.get('https://localhost:8443/bikes')
                 .then(response => {
                     this.products = response.data.filter(product =>
                         product.model.toLowerCase().includes(this.searchQuery.toLowerCase())

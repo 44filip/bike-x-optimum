@@ -42,7 +42,7 @@ export default {
     methods: {
         async performLogin() {
             try {
-                const response = await axios.get(`http://localhost:8081/user/email/${this.username}`);
+                const response = await axios.get(`https://localhost:8443/user/email/${this.username}`);
                 const user = response.data;
 
                 if (user && user.password === this.password) {
