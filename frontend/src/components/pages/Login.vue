@@ -23,6 +23,7 @@
 
 <script>
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 
 export default {
     name: "LoginComponent",
@@ -44,8 +45,9 @@ export default {
             try {
                 const response = await axios.get(`https://localhost:8443/user/email/${this.username}`);
                 const user = response.data;
+                const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
 
-                if (user && user.password === this.password) {
+                if (user && user.password.toString() === hashedPassword) {
 
                     delete user.password;
                     localStorage.setItem("user", JSON.stringify(user));

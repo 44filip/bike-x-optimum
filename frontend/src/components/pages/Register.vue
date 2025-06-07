@@ -21,7 +21,9 @@
 </template>
 <script>
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 import PopupError from './PopupError'
+
 export default {
     name: "RegisterComponent",
     data() {
@@ -36,9 +38,10 @@ export default {
     methods: {
         async performRegister() {
             try {
+                const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
                 const user = {
                     email: this.email,
-                    password: this.password,
+                    password: hashedPassword,
                     balance: 0,
                     role: 'user'
                 };
