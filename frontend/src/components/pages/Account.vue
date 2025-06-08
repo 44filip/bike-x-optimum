@@ -21,6 +21,7 @@
 </template>
 <script>
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 
 export default {
     name: "AccountComponent",
@@ -47,27 +48,23 @@ export default {
             }
         },
         async changePassword() {
-            var email = JSON.parse(localStorage.getItem('user'))
-            var userEmail = email.email;
+            const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
+            let email = JSON.parse(localStorage.getItem('user'));
+            let userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
-            var user = response.data;
-            console.log(user.password);
-            user.password = this.password;
-            console.log(this.password);
-            console.log(user);
+            let user = response.data;
 
+            user.password = hashedPassword;
 
             await this.changePasswordInBackend(user);
+
         }, async changePasswordInBackend(user) {
             try {
-                console.log(user);
-                const response = await axios.put('https://localhost:8443/update', user, {
+                await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log(response.data);
-                console.log("password changed");
             } catch (error) {
                 console.error(error);
             }
