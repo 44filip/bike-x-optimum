@@ -60,6 +60,7 @@ export default {
                     this.balance.$forceUpdate()
                 } else {
                     console.log("Invalid email or password.");
+                    //TODO: Dodaj popup nekad u buducnosti
                 }
             } catch (error) {
                 this.error = "An error occurred during login.";

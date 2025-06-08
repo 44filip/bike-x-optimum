@@ -3,7 +3,6 @@ import axios from 'axios';
 const getAllUsers = async (context) => {
     try {
         const response = await axios.get('hhttps://localhost:8443/users');
-        console.log(response.data);
         context.commit('setUsers', response.data);
         
     } catch (error) {

@@ -36,22 +36,18 @@ export default {
             var userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
             var user = response.data;
-            console.log(user);
             user.balance = (parseFloat(user.balance) + parseFloat(this.balance)).toFixed(2);
-            console.log(user);
 
 
             await this.updateUserInBackend(user);
         }, async updateUserInBackend(user) {
             try {
-                console.log(user);
-                const response = await axios.put('https://localhost:8443/update', user, {
+                await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log(response.data);
-                console.log("funds added");
+
                 this.$store.commit('updateBalance', user.balance);
                 this.$refs.TopUpAdded.showPopup();
                 localStorage.setItem('user', JSON.stringify(user));

@@ -69,7 +69,6 @@ export default {
                     this.products = response.data.filter(product =>
                         product.model.toLowerCase().includes(this.searchQuery.toLowerCase())
                     );
-                    console.log(response.data);
                 })
                 .catch(error => {
                     console.error("There was an error!", error);

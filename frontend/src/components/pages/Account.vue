@@ -34,15 +34,11 @@ export default {
     methods: {
         async deleteAccount() {
             try {
-                console.log(this.userId);
-                const response = await axios.delete(`https://localhost:8443/delete/id/${this.userId}`);
+                await axios.delete(`https://localhost:8443/delete/id/${this.userId}`);
                 this.$store.commit("changeUser", undefined)
                 this.$router.push("/")
                 window.location.reload();
                 this.$forceUpdate()
-
-                console.log(response.data);
-                console.log("obrisan");
             } catch (error) {
                 console.error(error);
             }

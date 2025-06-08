@@ -106,12 +106,7 @@ export default {
             var userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
             var user = response.data;
-            console.log(user);
-            console.log(user.balance);
-            console.log(this.totalPrice);
             user.balance = (parseFloat(user.balance) - parseFloat(this.totalPrice)).toFixed(2);
-
-
 
             await this.updateUserInBackend(user);
         }
@@ -120,29 +115,22 @@ export default {
             const userId = JSON.parse(localStorage.getItem('user')).userId;
 
             const products = this.$store.state.cart;
-            console.log(this.$store.state.cart);
-            console.log(products);
 
             const totalPrice = products.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             for (const product of products) {
                 const numberOfTransactions = product.quantity;
-                const currentDate = new Date();
-                const formattedDate = currentDate.toISOString().replace('T', ' ').substring(0, 19);
 
                 for (let i = 0; i < numberOfTransactions; i++) {
                     const transaction = {
                         userId: userId,
                         bikeId: product.bikeId
                     };
-                    console.log(userId);
-                    console.log(product.bikeId);
-                    console.log(formattedDate);
+
                     try {
-                        const response = await axios.post('https://localhost:8443/addTransaction', transaction);
+                        await axios.post('https://localhost:8443/addTransaction', transaction);
                         this.removeFromBalance();
-                        console.log("proslo");
-                        console.log(response.data);
+
                     } catch (error) {
                         console.error(error);
                     }
@@ -152,17 +140,16 @@ export default {
             var email = JSON.parse(localStorage.getItem('user'))
             var userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`);
-            var user = response.data;
+            let user = response.data;
             user.balance = parseFloat(user.balance) - parseFloat(totalPrice);
 
             try {
-                const responseBalance = await axios.put('https://localhost:8443/update', user, {
+                await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log("proslo");
-                console.log(responseBalance.data);
+
                 this.clearCart();
             } catch (error) {
                 console.error(error);
@@ -170,14 +157,12 @@ export default {
         },
         async updateUserInBackend(user) {
             try {
-                console.log(user);
-                const response = await axios.put('https://localhost:8443/update', user, {
+                await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log(response.data);
-                console.log("funds added");
+
                 this.$store.commit('updateBalance', user.balance);
                 localStorage.setItem('user', JSON.stringify(user));
             } catch (error) {

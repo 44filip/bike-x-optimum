@@ -45,8 +45,7 @@ export default {
                     balance: 0,
                     role: 'user'
                 };
-                const response = await axios.post('https://localhost:8443/addUser', user);
-                console.log(response.data);
+                await axios.post('https://localhost:8443/addUser', user);
                 this.$router.push('/registerdLogin');
             } catch (error) {
                 this.$refs.popup.showPopup();
