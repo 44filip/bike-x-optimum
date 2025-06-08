@@ -25,7 +25,9 @@ Run **BackendApplication.java** found in
 “.\backend\src\main\java\rs\ac\singidunum\backend\BackendApplication.java” either
 through a Java environment or through the terminal (the execution will vary from
 system to system).
+
 # Browser
-Navigate to **“localhost:8080”** in the address bar.
+Navigate to **http://localhost:8080** or **https://localhost:8080** in the address bar. \
+Using **https** may trigger a security warning due to the certificate in place.
 # Success
 ![bikes](https://github.com/44filip/project-x/assets/100999946/27f846f1-8d37-41b0-a151-fdf8c6916804)
