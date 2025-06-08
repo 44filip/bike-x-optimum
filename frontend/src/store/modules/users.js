@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getAllUsers = async (context) => {
     try {
-        const response = await axios.get('hhttps://localhost:8443/users');
+        const response = await axios.get('https://localhost:8443/users');
         context.commit('setUsers', response.data);
         
     } catch (error) {
