@@ -32,10 +32,10 @@ export default {
     ,
     methods: {
         async addToBalance() {
-            var email = JSON.parse(localStorage.getItem('user'))
-            var userEmail = email.email;
+            let email = JSON.parse(localStorage.getItem('user'))
+            let userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
-            var user = response.data;
+            let user = response.data;
             user.balance = (parseFloat(user.balance) + parseFloat(this.balance)).toFixed(2);
 
 

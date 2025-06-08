@@ -102,10 +102,10 @@ export default {
             this.$store.dispatch('decrementQuantity', item);
         },
         async removeFromBalance() {
-            var email = JSON.parse(localStorage.getItem('user'))
-            var userEmail = email.email;
+            let email = JSON.parse(localStorage.getItem('user'))
+            let userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`)
-            var user = response.data;
+            let user = response.data;
             user.balance = (parseFloat(user.balance) - parseFloat(this.totalPrice)).toFixed(2);
 
             await this.updateUserInBackend(user);
@@ -137,8 +137,8 @@ export default {
                 }
             }
 
-            var email = JSON.parse(localStorage.getItem('user'))
-            var userEmail = email.email;
+            let email = JSON.parse(localStorage.getItem('user'))
+            let userEmail = email.email;
             const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`);
             let user = response.data;
             user.balance = parseFloat(user.balance) - parseFloat(totalPrice);
