@@ -7,7 +7,7 @@ import Contact from "./components/pages/Contact.vue";
 import Login from "./components/pages/Login.vue";
 import Register from "./components/pages/Register.vue";
 import Shop from "./components/pages/Shop.vue";
-import store from "./store/store";
+import store from "./store";
 import RegisterdLogin from "./components/pages/RegisterdLogin.vue";
 import RoleDirective from "./directives/roleDirectives";
 import Topup from "./components/pages/Topup.vue";
