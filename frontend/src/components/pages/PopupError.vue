@@ -1,22 +1,30 @@
 <template>
   <div v-if="show" class="popup">
-    <p>{{ message }}</p>
+    <p>{{ currentMessage }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: "PopupError",
+  props: {
+    message: {
+      type: String,
+      default: "An error occurred.",
+    },
+  },
   data() {
     return {
       show: false,
-      message: "",
+      currentMessage: this.message,
       timeoutId: null,
     };
   },
   methods: {
     showPopup(newMessage) {
-      this.message = newMessage;
+      if (newMessage) {
+        this.currentMessage = newMessage;
+      }
       this.show = true;
       clearTimeout(this.timeoutId);
       this.timeoutId = setTimeout(() => {

@@ -85,11 +85,10 @@ export default {
           this.$router.push("/");
           window.location.reload();
         } else {
-          this.$refs.errorPopup.message = "Invalid email or password.";
-          this.$refs.errorPopup.showPopup();
+          this.$refs.errorPopup.showPopup("Invalid email or password.");
         }
       } catch (error) {
-        this.error = "An error occurred during login.";
+        this.$refs.errorPopup.showPopup("An error occurred during login.");
         console.error(error);
       }
     },
