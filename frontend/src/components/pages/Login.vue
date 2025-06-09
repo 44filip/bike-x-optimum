@@ -41,7 +41,7 @@ export default {
         }
     },
     methods: {
-        async performLogin() {
+    async performLogin() {
             try {
                 const response = await axios.get(`https://localhost:8443/user/email/${this.username}`);
                 const user = response.data;
@@ -58,12 +58,21 @@ export default {
                     window.location.reload();
                     this.$forceUpdate();
                     this.balance.$forceUpdate();
+
                     if (user.token && user.token.length > 0) {
                         localStorage.setItem("jwtToken", user.token);
-                        console.log("JWT token received and stored:", user.token);
+                        console.log("JWT access token received and stored:", user.token);
                     } else {
-                        console.log("No JWT token received");
+                        console.log("No JWT access token received");
                     }
+
+                    if (user.refreshToken && user.refreshToken.length > 0) {
+                        localStorage.setItem("refreshToken", user.refreshToken);
+                        console.log("JWT refresh token received and stored:", user.refreshToken);
+                    } else {
+                        console.log("No JWT refresh token received");
+                    }
+
                 } else {
                     console.log("Invalid email or password.");
                     // TODO: Add popup or error message

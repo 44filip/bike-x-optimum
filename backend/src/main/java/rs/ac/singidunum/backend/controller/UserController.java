@@ -38,8 +38,12 @@ public class UserController {
     public User findUserByEmail(@PathVariable String email) {
         User user = service.getUserByEmail(email);
         if (user != null) {
-            String token = jwtUtil.generateAccessToken(user.getEmail());
-            user.setToken(token);
+            String accessToken = jwtUtil.generateAccessToken(user.getEmail());
+            String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
+            user.setToken(accessToken);
+            user.setRefreshToken(refreshToken);
+            System.out.println("AccessToken: " + accessToken);
+            System.out.println("RefreshToken: " + refreshToken);
         }
         return user;
     }
