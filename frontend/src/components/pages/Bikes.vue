@@ -25,7 +25,7 @@
                                 </div>
 
                                 <div>
-                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span
+                                    <h4 class="price_text">Price <span style=" color: #f7c17b">$</span><span
                                             style=" color: #325662">{{ product.price }}</span></h4>
                                 </div>
 
