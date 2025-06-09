@@ -11,7 +11,7 @@ Node.js version 20.x or below (min 8.x) \
 Python 3.x (latest)* 
 
 Through a terminal, navigate to **.\\frontend\\** by typing “cd .\frontend” then execute the
-following commands **in order**.
+following commands **in order**:
 ```
 npm install
 npm run serve
