@@ -56,11 +56,17 @@ export default {
 
                     this.$router.push("/");
                     window.location.reload();
-                    this.$forceUpdate()
-                    this.balance.$forceUpdate()
+                    this.$forceUpdate();
+                    this.balance.$forceUpdate();
+                    if (user.token && user.token.length > 0) {
+                        localStorage.setItem("jwtToken", user.token);
+                        console.log("JWT token received and stored:", user.token);
+                    } else {
+                        console.log("No JWT token received");
+                    }
                 } else {
                     console.log("Invalid email or password.");
-                    //TODO: Dodaj popup nekad u buducnosti
+                    // TODO: Add popup or error message
                 }
             } catch (error) {
                 this.error = "An error occurred during login.";

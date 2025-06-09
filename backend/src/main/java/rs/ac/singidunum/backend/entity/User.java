@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Data
 @AllArgsConstructor
@@ -19,4 +20,9 @@ public class User {
     private String password;
     private double balance;
     private String role;
+
+    @Transient
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String token;  // transient field for JWT token
+
 }
