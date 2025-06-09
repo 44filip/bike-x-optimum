@@ -11,16 +11,19 @@ import java.util.List;
 public class BikeController {
     @Autowired
     private BikeService service;
+
     @GetMapping("/bikes")
-    public List<Bike> findAllBikes(){
+    public List<Bike> findAllBikes() {
         return service.getBikes();
     }
+
     @GetMapping("/bike/id/{id}")
-    public Bike findBikeById(@PathVariable int id){
+    public Bike findBikeById(@PathVariable int id) {
         return service.getBikeById(id);
     }
+
     @GetMapping("/bike/model/{model}")
-    public Bike findBikeByModel(@PathVariable String model){
+    public Bike findBikeByModel(@PathVariable String model) {
         return service.getBikeByModel(model);
     }
 }

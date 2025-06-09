@@ -20,7 +20,7 @@ public class BikeService {
         return repository.findById(id).orElse(null);
     }
 
-    public Bike getBikeByModel(String model){
+    public Bike getBikeByModel(String model) {
         return repository.findByModel(model);
     }
 }

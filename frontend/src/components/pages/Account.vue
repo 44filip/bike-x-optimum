@@ -13,13 +13,21 @@
         />
       </div>
       <div class="forma changepass">
-        <input class="lf--submit form-control" type="submit" value="CHANGE PASSWORD" />
+        <input
+          class="lf--submit form-control"
+          type="submit"
+          value="CHANGE PASSWORD"
+        />
       </div>
     </form>
     <p>If you wish to terminate your account press here:</p>
     <form @submit.prevent="deleteAccount" class="login-form">
       <div class="forma delacc">
-        <input class="lf--submit form-control" type="submit" value="DELETE ACCOUNT" />
+        <input
+          class="lf--submit form-control"
+          type="submit"
+          value="DELETE ACCOUNT"
+        />
       </div>
     </form>
   </div>
@@ -50,7 +58,9 @@ export default {
       try {
         const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
         let email = JSON.parse(localStorage.getItem("user")).email;
-        const response = await axios.get(`https://localhost:8443/user/email/${email}`);
+        const response = await axios.get(
+          `https://localhost:8443/user/email/${email}`
+        );
         let user = response.data;
         user.password = hashedPassword;
         await axios.put("https://localhost:8443/update", user, {

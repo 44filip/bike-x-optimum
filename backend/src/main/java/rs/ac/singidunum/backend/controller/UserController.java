@@ -22,17 +22,17 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public User addUser(@RequestBody User user){
+    public User addUser(@RequestBody User user) {
         return service.saveUser(user);
     }
 
     @GetMapping("/users")
-    public List<User> findAllUsers(){
+    public List<User> findAllUsers() {
         return service.getUsers();
     }
 
     @GetMapping("/user/id/{id}")
-    public User findUserById(@PathVariable int id){
+    public User findUserById(@PathVariable int id) {
         return service.getUserById(id);
     }
 
@@ -51,12 +51,12 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public User updateUser(@RequestBody User user){
+    public User updateUser(@RequestBody User user) {
         return service.updateUser(user);
     }
 
     @DeleteMapping("/delete/id/{id}")
-    public String deleteUser(@PathVariable int id){
+    public String deleteUser(@PathVariable int id) {
         return service.deleteUser(id);
     }
 

@@ -23,7 +23,7 @@ public class User {
 
     @Transient
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String token;  // transient field for JWT access token
+    private String token; // transient field for JWT access token
 
     @Transient
     @JsonInclude(JsonInclude.Include.NON_NULL)

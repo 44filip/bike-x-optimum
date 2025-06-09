@@ -1,7 +1,9 @@
 <template>
   <div class="page-size">
     <div class="form-grou">
-      <h1 v-if="showSpecialDiv">Your password has been successfully changed.</h1>
+      <h1 v-if="showSpecialDiv">
+        Your password has been successfully changed.
+      </h1>
       <h1>Login</h1>
       <form class="login-form" @submit.prevent="performLogin">
         <div class="forma">
@@ -64,9 +66,7 @@ export default {
         const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
 
         if (user && user.password.toString() === hashedPassword) {
-          delete user.password;
           localStorage.setItem("user", JSON.stringify(user));
-
           this.$store.commit("setUser", user);
 
           if (user.token && user.token.length > 0) {

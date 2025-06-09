@@ -28,12 +28,17 @@
           <li v-role="['admin', 'user']" class="nav-item">
             <a href="#" class="nav-link active">
               <router-link class="gas" to="/topup">
-                Topup&nbsp;<div>(${{ formattedBalance }})</div>
+                Topup&nbsp;
+                <div>(${{ formattedBalance }})</div>
               </router-link>
             </a>
           </li>
 
-          <li v-role="['admin', 'user']" @click="$emit('logout')" class="nav-item">
+          <li
+            v-role="['admin', 'user']"
+            @click="$emit('logout')"
+            class="nav-item"
+          >
             <a href="#" class="nav-link active">Logout</a>
           </li>
         </ul>
@@ -43,7 +48,9 @@
             <li class="numCart">
               <router-link to="/shop">
                 <div class="cartF">
-                  <div><img id="cartLogo" src="/images/shopping-cart.png" /></div>
+                  <div>
+                    <img id="cartLogo" src="/images/shopping-cart.png" />
+                  </div>
                   <div class="numCart">{{ cartQuantity }}</div>
                 </div>
               </router-link>
@@ -68,42 +75,43 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import axios from 'axios'
+import { mapGetters } from "vuex";
+import axios from "axios";
 
 export default {
-  name: 'NavComponent',
-  props: ['navItems'],
+  name: "NavComponent",
+  props: ["navItems"],
   computed: {
-    ...mapGetters(['cartQuantity']),
+    ...mapGetters(["cartQuantity"]),
     formattedBalance() {
-      return parseFloat(this.balance).toFixed(2)
-    }
+      return parseFloat(this.balance).toFixed(2);
+    },
   },
   data() {
     return {
-      balance: 0
-    }
+      balance: 0,
+    };
   },
   mounted() {
-    this.refreshBalance()
-    window.addEventListener('balance-updated', this.refreshBalance)
+    this.refreshBalance();
+    window.addEventListener("balance-updated", this.refreshBalance);
   },
   beforeDestroy() {
-    window.removeEventListener('balance-updated', this.refreshBalance)
+    window.removeEventListener("balance-updated", this.refreshBalance);
   },
   methods: {
     refreshBalance() {
-      const user = JSON.parse(localStorage.getItem('user'))
+      const user = JSON.parse(localStorage.getItem("user"));
       if (user?.email) {
-        axios.get(`https://localhost:8443/user/email/${user.email}`)
-          .then(res => {
-            this.balance = res.data.balance
-            localStorage.setItem('user', JSON.stringify(res.data))
+        axios
+          .get(`https://localhost:8443/user/email/${user.email}`)
+          .then((res) => {
+            this.balance = res.data.balance;
+            localStorage.setItem("user", JSON.stringify(res.data));
           })
-          .catch(err => console.error(err))
+          .catch((err) => console.error(err));
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>

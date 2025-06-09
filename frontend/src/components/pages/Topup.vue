@@ -26,14 +26,14 @@
 </template>
 
 <script>
-import axios from 'axios';
-import TopUpAdded from './TopUpAdded.vue';
+import axios from "axios";
+import TopUpAdded from "./TopUpAdded.vue";
 
 export default {
-  name: 'TopupComponent',
+  name: "TopupComponent",
   data() {
     return {
-      balance: '',
+      balance: "",
     };
   },
   components: {
@@ -41,26 +41,28 @@ export default {
   },
   methods: {
     async addToBalance() {
-      let email = JSON.parse(localStorage.getItem('user'));
+      let email = JSON.parse(localStorage.getItem("user"));
       let userEmail = email.email;
       const response = await axios.get(
         `https://localhost:8443/user/email/${userEmail}`
       );
       let user = response.data;
-      user.balance = (parseFloat(user.balance) + parseFloat(this.balance)).toFixed(2);
+      user.balance = (
+        parseFloat(user.balance) + parseFloat(this.balance)
+      ).toFixed(2);
 
       await this.updateUserInBackend(user);
     },
     async updateUserInBackend(user) {
       try {
-        await axios.put('https://localhost:8443/update', user, {
+        await axios.put("https://localhost:8443/update", user, {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         });
 
-        localStorage.setItem('user', JSON.stringify(user));
-        window.dispatchEvent(new Event('balance-updated'));
+        localStorage.setItem("user", JSON.stringify(user));
+        window.dispatchEvent(new Event("balance-updated"));
         this.$refs.TopUpAdded.showPopup();
       } catch (error) {
         console.error(error);

@@ -1,11 +1,8 @@
 <template>
-    <div>
-        a
-    </div>
+  <div>a</div>
 </template>
 <script>
 export default {
-    name: "AdminComponent"
-}
-
+  name: "AdminComponent",
+};
 </script>
