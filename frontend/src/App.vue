@@ -36,6 +36,7 @@ export default {
     };
   },
   created() {
+    document.title = 'Bike X Optimum';
     const refreshToken = localStorage.getItem("refreshToken");
     if (refreshToken) {
       this.scheduleTokenRefresh();
