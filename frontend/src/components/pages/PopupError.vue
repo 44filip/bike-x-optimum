@@ -10,12 +10,13 @@ export default {
   data() {
     return {
       show: false,
-      message: "Account with this email already exists!",
+      message: "",
       timeoutId: null,
     };
   },
   methods: {
-    showPopup() {
+    showPopup(newMessage) {
+      this.message = newMessage;
       this.show = true;
       clearTimeout(this.timeoutId);
       this.timeoutId = setTimeout(() => {

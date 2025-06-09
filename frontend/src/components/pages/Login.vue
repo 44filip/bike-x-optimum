@@ -33,6 +33,7 @@
           >Don't have an account?<br />Register HERE</router-link
         >
       </a>
+      <PopupError ref="errorPopup" />
     </div>
   </div>
 </template>
@@ -40,9 +41,13 @@
 <script>
 import axios from "axios";
 import CryptoJS from "crypto-js";
+import PopupError from "./PopupError.vue";
 
 export default {
   name: "LoginComponent",
+  components: {
+    PopupError,
+  },
   data() {
     return {
       error: "",
@@ -80,8 +85,8 @@ export default {
           this.$router.push("/");
           window.location.reload();
         } else {
-          console.log("Invalid email or password.");
-          // TODO: Add popup or error message
+          this.$refs.errorPopup.message = "Invalid email or password.";
+          this.$refs.errorPopup.showPopup();
         }
       } catch (error) {
         this.error = "An error occurred during login.";

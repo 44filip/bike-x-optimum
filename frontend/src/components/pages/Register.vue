@@ -22,37 +22,34 @@
           />
         </div>
         <div class="forma">
-          <input
-            class="lf--submit form-control"
-            type="submit"
-            value="REGISTER"
-          />
+          <input class="lf--submit form-control" type="submit" value="REGISTER" />
         </div>
       </form>
-      <a class="lf--forgot"
-        ><router-link to="/login"
+      <a class="lf--forgot">
+        <router-link to="/login"
           >Already have an account?<br />Login HERE</router-link
-        ></a
-      >
-      <popup-error ref="popup"></popup-error>
+        >
+      </a>
+      <PopupError ref="popup" />
     </div>
   </div>
 </template>
+
 <script>
 import axios from "axios";
 import CryptoJS from "crypto-js";
-import PopupError from "./PopupError";
+import PopupError from "./PopupError.vue";
 
 export default {
   name: "RegisterComponent",
+  components: {
+    PopupError,
+  },
   data() {
     return {
       email: "",
       password: "",
     };
-  },
-  components: {
-    PopupError,
   },
   methods: {
     async performRegister() {
@@ -67,7 +64,7 @@ export default {
         await axios.post("https://localhost:8443/addUser", user);
         this.$router.push("/registerdLogin");
       } catch (error) {
-        this.$refs.popup.showPopup();
+        this.$refs.popup.showPopup("Account with this email already exists!");
       }
     },
   },
