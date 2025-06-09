@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `bike_store` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bike_store`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bike_store
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.0.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,15 +24,15 @@ DROP TABLE IF EXISTS `transactions`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transactions` (
   `transaction_id` int NOT NULL AUTO_INCREMENT,
-  `buyer` int NOT NULL,
+  `buyer` int DEFAULT NULL,
   `product` int NOT NULL,
   `datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`transaction_id`),
   KEY `buyer` (`buyer`),
   KEY `product` (`product`),
-  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`buyer`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`buyer`) REFERENCES `users` (`user_id`) ON DELETE SET NULL,
   CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`product`) REFERENCES `bikes` (`bike_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +41,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (1,1,3,'2024-03-09 20:27:40'),(2,2,1,'2024-03-09 20:27:48'),(3,3,2,'2024-03-09 20:27:53'),(4,2,1,'2024-03-13 00:15:21'),(5,2,2,'2024-03-13 00:15:21'),(6,2,4,'2024-03-13 00:15:21'),(7,2,4,'2024-03-13 00:15:21'),(8,2,4,'2024-03-13 00:15:21'),(9,2,5,'2024-03-13 00:15:21'),(10,2,5,'2024-03-13 00:15:21'),(11,5,2,'2024-03-13 02:07:04'),(12,5,2,'2024-03-13 02:07:04'),(13,5,2,'2024-03-13 02:07:04'),(14,5,2,'2024-03-13 02:07:04'),(15,5,2,'2024-03-13 02:07:04'),(16,5,3,'2024-03-13 02:07:04'),(17,5,3,'2024-03-13 02:07:04'),(18,5,3,'2024-03-13 02:07:04'),(19,5,3,'2024-03-13 02:07:04'),(20,5,3,'2024-03-13 02:07:04'),(21,5,3,'2024-03-13 02:07:04'),(22,5,6,'2024-03-13 02:07:04'),(23,5,6,'2024-03-13 02:07:04'),(24,5,6,'2024-03-14 06:35:18'),(25,5,6,'2024-03-14 06:35:18'),(26,5,4,'2024-03-14 06:35:18'),(27,5,4,'2024-03-14 06:35:18'),(28,5,3,'2024-03-14 06:35:18'),(29,5,3,'2024-03-14 06:35:18'),(30,5,2,'2024-03-14 19:11:55'),(31,1,5,'2024-03-15 05:56:45'),(32,1,3,'2024-03-15 05:57:13'),(33,1,3,'2024-03-15 05:57:13'),(34,1,3,'2024-03-15 05:57:13'),(35,1,3,'2024-03-15 05:57:13'),(36,3,1,'2024-03-15 06:00:33'),(37,3,6,'2024-03-15 06:01:43'),(38,3,6,'2024-03-15 06:01:43'),(39,4,6,'2024-03-15 08:59:49'),(40,4,3,'2024-03-15 09:26:33'),(41,4,2,'2024-03-15 09:47:27'),(42,4,2,'2024-03-15 09:47:27'),(43,1,2,'2024-03-15 09:55:31');
+INSERT INTO `transactions` VALUES (1,1,5,'2025-06-09 04:43:33'),(2,NULL,1,'2025-06-09 04:44:17'),(3,NULL,1,'2025-06-09 04:44:17');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-15 11:40:24
+-- Dump completed on 2025-06-09  6:47:29
