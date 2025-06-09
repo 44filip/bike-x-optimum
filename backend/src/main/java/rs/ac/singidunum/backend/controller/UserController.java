@@ -5,7 +5,10 @@ import rs.ac.singidunum.backend.entity.User;
 import rs.ac.singidunum.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import rs.ac.singidunum.backend.util.JwtUtil;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
+import java.util.Map;
 import java.util.List;
 
 @RestController
@@ -56,5 +59,23 @@ public class UserController {
     @DeleteMapping("/delete/id/{id}")
     public String deleteUser(@PathVariable int id){
         return service.deleteUser(id);
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refreshAccessToken(@RequestBody String refreshToken) {
+        try {
+            String email = jwtUtil.extractSubject(refreshToken);
+            if (email == null || !jwtUtil.validateToken(refreshToken)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid refresh token");
+            }
+            User user = service.getUserByEmail(email);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found");
+            }
+            String newAccessToken = jwtUtil.generateAccessToken(email);
+            return ResponseEntity.ok(Map.of("accessToken", newAccessToken));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid refresh token");
+        }
     }
 }
