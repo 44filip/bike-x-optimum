@@ -109,51 +109,48 @@ export default {
             user.balance = (parseFloat(user.balance) - parseFloat(this.totalPrice)).toFixed(2);
 
             await this.updateUserInBackend(user);
-        }
-        ,
+        },
         async sendTransactionData() {
             const userId = JSON.parse(localStorage.getItem('user')).userId;
-
             const products = this.$store.state.cart;
-
             const totalPrice = products.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
             for (const product of products) {
                 const numberOfTransactions = product.quantity;
-
                 for (let i = 0; i < numberOfTransactions; i++) {
                     const transaction = {
                         userId: userId,
                         bikeId: product.bikeId
                     };
-
                     try {
                         await axios.post('https://localhost:8443/addTransaction', transaction);
-
                     } catch (error) {
                         console.error(error);
                     }
                 }
             }
 
-            let email = JSON.parse(localStorage.getItem('user'))
-            let userEmail = email.email;
-            const response = await axios.get(`https://localhost:8443/user/email/${userEmail}`);
-            let user = response.data;
-            user.balance = parseFloat(user.balance) - parseFloat(totalPrice);
-
             try {
+                const email = JSON.parse(localStorage.getItem('user')).email;
+                const response = await axios.get(`https://localhost:8443/user/email/${email}`);
+                const user = response.data;
+                user.balance = (parseFloat(user.balance) - parseFloat(totalPrice)).toFixed(2);
+
                 await axios.put('https://localhost:8443/update', user, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
 
+                this.$store.commit('updateBalance', user.balance);
+                localStorage.setItem('user', JSON.stringify(user));
+                window.dispatchEvent(new Event('balance-updated'));
                 this.clearCart();
+
             } catch (error) {
                 console.error(error);
             }
-        },
+        },  
         async updateUserInBackend(user) {
             try {
                 await axios.put('https://localhost:8443/update', user, {

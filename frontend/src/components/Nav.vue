@@ -7,7 +7,6 @@
 
       <form class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
-
           <li v-for="(item, index) in navItems" :key="index" class="nav-item">
             <a class="nav-link active">
               <router-link :to="item.path">{{ item.text }}</router-link>
@@ -37,7 +36,6 @@
           <li v-role="['admin', 'user']" @click="$emit('logout')" class="nav-item">
             <a href="#" class="nav-link active">Logout</a>
           </li>
-
         </ul>
 
         <div class="login_menu">
@@ -70,16 +68,42 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
+import axios from 'axios'
 
 export default {
-  name: "NavComponent",
-  props: ["navItems"],
+  name: 'NavComponent',
+  props: ['navItems'],
   computed: {
-    ...mapGetters(["cartQuantity", "balance"]),
+    ...mapGetters(['cartQuantity']),
     formattedBalance() {
-      return parseFloat(this.balance).toFixed(2);
-    },
+      return parseFloat(this.balance).toFixed(2)
+    }
   },
-};
+  data() {
+    return {
+      balance: 0
+    }
+  },
+  mounted() {
+    this.refreshBalance()
+    window.addEventListener('balance-updated', this.refreshBalance)
+  },
+  beforeDestroy() {
+    window.removeEventListener('balance-updated', this.refreshBalance)
+  },
+  methods: {
+    refreshBalance() {
+      const user = JSON.parse(localStorage.getItem('user'))
+      if (user?.email) {
+        axios.get(`https://localhost:8443/user/email/${user.email}`)
+          .then(res => {
+            this.balance = res.data.balance
+            localStorage.setItem('user', JSON.stringify(res.data))
+          })
+          .catch(err => console.error(err))
+      }
+    }
+  }
+}
 </script>
