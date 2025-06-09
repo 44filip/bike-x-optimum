@@ -3,7 +3,7 @@
 MySQL Server (latest) \
 MySQL Workbench (latest)*
 
-Import the data found in **/db_dump** (cannot delete users with transactions) or **/db_dump_cascade** (deletes users alongside their transactions) to your relational database of choice (project
+Import the data found in **/db_dump** to your relational database of choice (project
 choice is MySQL). 
 # Frontend
 *Prerequisites are: \
