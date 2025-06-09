@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-
     <Head />
 
     <body>
       <Nav :navItems="navigation" @logout="logout" />
       <main>
-        <router-view></router-view>
+        <router-view @logout="logout"></router-view>
       </main>
       <Footer />
     </body>
@@ -20,24 +19,23 @@ import Nav from "./components/Nav.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Head,
     Nav,
-    Footer
+    Footer,
   },
   data() {
     return {
       navigation: [
         { text: "Home", path: "/" },
         { text: "Bikes", path: "/bikes" },
-        { text: "Contact", path: "/contact" }
+        { text: "Contact", path: "/contact" },
       ],
       refreshTimeoutId: null,
-    }
+    };
   },
   created() {
-    document.title = 'Bike X Optimum';
     const refreshToken = localStorage.getItem("refreshToken");
     if (refreshToken) {
       this.scheduleTokenRefresh();
@@ -83,14 +81,14 @@ export default {
       this.$store.commit("setBalance", 0);
       this.$router.push("/login");
       window.location.reload();
-    }
+    },
   },
   beforeDestroy() {
     if (this.refreshTimeoutId) {
       clearTimeout(this.refreshTimeoutId);
     }
-  }
-}
+  },
+};
 </script>
 
 <style>
