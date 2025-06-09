@@ -79,7 +79,7 @@ export default {
         this.refreshTimeoutId = null;
       }
       this.$store.commit("setUser", null);
-      this.$store.commit("setBalance", 0);
+      this.$store.commit("setUserBalance", 0);
       this.$router.push("/login");
       window.location.reload();
     },
