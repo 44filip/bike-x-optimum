@@ -11,28 +11,23 @@
 
          <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
-               <li v-for="item, index in navItems" :key="index" class="nav-item">
+               <li v-for="(item, index) in navItems" :key="index" class="nav-item">
                   <a class="nav-link active"><router-link :to="item.path">{{ item.text }}</router-link></a>
                </li>
-               <li v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link
-                        to="/login">Login</router-link></a></li>
-               <!-- <li v-role="['admin']" class="nav-item"><a href="#" class="nav-link active"><router-link
-                        to="/admin">Admin</router-link></a></li> -->
-               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
-                        to="/account">Account</router-link></a></li>
-               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link
-                        class="gas" to="/topup">Topup&nbsp;<div>(${{ formattedBalance }})</div></router-link></a></li>
-               <li v-role="['admin', 'user']" @click="logout" class="nav-item"><a href="#"
-                     class="nav-link active">Logout</a></li>
+               <li v-role="['unauthorized']" class="nav-item"><a class="nav-link active"><router-link to="/login">Login</router-link></a></li>
+               <li v-role="['admin', 'user']" class="nav-item"><a href="#" class="nav-link active"><router-link to="/account">Account</router-link></a></li>
+               <li v-role="['admin', 'user']" @click="$emit('logout')" class="nav-item"><a href="#" class="nav-link active">Logout</a></li>
             </ul>
             <div class="login_menu">
                <ul>
-                  <li class="numCart"><router-link to="/shop">
-                        <div class="cartF">
-                           <div><img id="cartLogo" src="/images/shopping-cart.png"></div>
-                           <div class="numCart">{{ cartQuantity }}</div>
-                        </div>
-                     </router-link></li>
+                  <li class="numCart">
+                    <router-link to="/shop">
+                      <div class="cartF">
+                        <div><img id="cartLogo" src="/images/shopping-cart.png"></div>
+                        <div class="numCart">{{ cartQuantity }}</div>
+                      </div>
+                    </router-link>
+                  </li>
                </ul>
             </div>
          </form>
@@ -46,24 +41,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
    name: "NavComponent",
    props: ["navItems"],
    computed: {
       ...mapGetters([
-         'cartQuantity',
-         'balance'
-      ]), formattedBalance: function () {
-         return parseFloat(this.balance).toFixed(2);
-      }
-   }, methods: {
-      logout() {
-         this.$store.commit("changeUser", undefined)
-         this.$router.push("/login")
-         window.location.reload();
-         this.balance.$forceUpdate()
-      }
+         'cartQuantity'
+      ])
    }
 };
-
 </script>
