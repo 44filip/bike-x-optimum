@@ -23,7 +23,6 @@
 
 <script>
 import axios from 'axios';
-import CryptoJS from 'crypto-js';
 
 export default {
     name: "LoginComponent",
@@ -43,28 +42,24 @@ export default {
     methods: {
         async performLogin() {
             try {
-                const response = await axios.get(`https://localhost:8443/user/email/${this.username}`);
-                const user = response.data;
-                const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
+                const response = await axios.post('https://localhost:8443/login', {
+                    email: this.username,
+                    password: this.password.trim()
+                });
 
-                if (user && user.password.toString() === hashedPassword) {
+                const { user, tokens } = response.data;
 
-                    delete user.password;
-                    localStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("accessToken", tokens.accessToken);
+                localStorage.setItem("refreshToken", tokens.refreshToken);
 
-                    this.$store.commit("setUser", user);
+                this.$store.commit("setUser", user);
 
-                    this.$router.push("/");
-                    window.location.reload();
-                    this.$forceUpdate()
-                    this.balance.$forceUpdate()
-                } else {
-                    console.log("Invalid email or password.");
-                    //TODO: Dodaj popup nekad u buducnosti
-                }
+                this.$router.push("/");
+                window.location.reload();
             } catch (error) {
-                this.error = "An error occurred during login.";
                 console.error(error);
+                this.error = "Invalid email or password.";
             }
         }
     }
