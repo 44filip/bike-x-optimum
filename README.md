@@ -27,7 +27,8 @@ through a Java environment or through the terminal (the execution will vary from
 system to system).
 
 # Browser
-Navigate to **http://localhost:8080** or **https://localhost:8080** in the address bar. \
-Using **https** may trigger a security warning due to the certificate in place.
+Navigate to **https://localhost:8080** in the address bar. \
+Using **https** may trigger a security warning due to the certificate in place. \
+If you're having login issues, navigate to https://localhost:8443/login and accept the security risk.
 # Success
 ![bikes](https://github.com/44filip/project-x/assets/100999946/27f846f1-8d37-41b0-a151-fdf8c6916804)
