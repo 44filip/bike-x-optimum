@@ -129,7 +129,6 @@ export default {
 
                     try {
                         await axios.post('https://localhost:8443/addTransaction', transaction);
-                        this.removeFromBalance();
 
                     } catch (error) {
                         console.error(error);
