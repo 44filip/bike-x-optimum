@@ -3,7 +3,6 @@ package rs.ac.singidunum.backend.controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.backend.entity.User;
 import rs.ac.singidunum.backend.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import rs.ac.singidunum.backend.util.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
