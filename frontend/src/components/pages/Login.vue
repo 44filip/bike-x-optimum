@@ -71,16 +71,10 @@ export default {
 
           if (user.token && user.token.length > 0) {
             localStorage.setItem("jwtToken", user.token);
-            console.log("JWT access token received and stored:", user.token);
-          } else {
-            console.log("No JWT access token received");
           }
 
           if (user.refreshToken && user.refreshToken.length > 0) {
             localStorage.setItem("refreshToken", user.refreshToken);
-            console.log("JWT refresh token received and stored:", user.refreshToken);
-          } else {
-            console.log("No JWT refresh token received");
           }
 
           this.$router.push("/");
