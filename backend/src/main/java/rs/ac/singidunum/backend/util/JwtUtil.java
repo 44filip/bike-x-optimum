@@ -19,7 +19,7 @@ public class JwtUtil {
     private Key key;
 
     private static final long ACCESS_TOKEN_VALIDITY = 10 * 1000; // 10 seconds for testing
-    private static final long REFRESH_TOKEN_VALIDITY = 7 * 24 * 60 * 60 * 1000; // 7 days
+    private static final long REFRESH_TOKEN_VALIDITY = 30 * 1000;// 30 seconds for testing
 
     @PostConstruct
     public void init() {
