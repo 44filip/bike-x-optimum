@@ -92,7 +92,9 @@ export default {
             console.log("Access token expired, logging out.");
             this.logout();
           } else {
-            console.log(`Access token valid. Expires in ${decoded.exp - now} seconds.`);
+            console.log(
+              `Access token valid. Expires in ${decoded.exp - now} seconds.`
+            );
           }
         } catch (e) {
           console.error("Failed to decode token, logging out.", e);
@@ -114,6 +116,7 @@ export default {
       }
       this.$store.commit("setUser", null);
       this.$store.commit("setUserBalance", 0);
+      this.$store.commit("emptyCart");
       this.$router.push("/login");
       window.location.reload();
     },

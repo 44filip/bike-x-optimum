@@ -96,29 +96,21 @@
 
 <script>
 import axios from "axios";
-import { mapState, mapGetters, mapActions } from "vuex";
+
 export default {
   name: "ShopComponent",
   computed: {
     cart() {
       return this.$store.state.cart;
     },
-    ...mapGetters("cart", {
-      products: "cartProducts",
-      total: "cartTotal",
-    }),
-    ...mapState("cart", {
-      checkoutStatus: (state) => state.checkoutStatus,
-    }),
-    totalPrice: function () {
-      return this.$store.state.cart.reduce(
+    totalPrice() {
+      return this.cart.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
       );
     },
   },
   methods: {
-    ...mapActions("cart", ["checkout"]),
     clearCart() {
       this.$store.commit("emptyCart");
     },
@@ -126,92 +118,49 @@ export default {
       this.$store.commit("removeItem", item);
     },
     incrementQuantity(item) {
-      this.$store.dispatch("incrementQuantity", item);
+      this.$store.commit("incrementQuantity", item);
     },
     decrementQuantity(item) {
-      this.$store.dispatch("decrementQuantity", item);
-    },
-    async removeFromBalance() {
-      let email = JSON.parse(localStorage.getItem("user"));
-      let userEmail = email.email;
-      const response = await axios.get(
-        `https://localhost:8443/user/email/${userEmail}`
-      );
-      let user = response.data;
-      user.balance = (
-        parseFloat(user.balance) - parseFloat(this.totalPrice)
-      ).toFixed(2);
-
-      await this.updateUserInBackend(user);
+      this.$store.commit("decrementQuantity", item);
     },
     async sendTransactionData() {
-      const userId = JSON.parse(localStorage.getItem("user")).userId;
-      const products = this.$store.state.cart;
-      const totalPrice = products.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user) return;
 
-      for (const product of products) {
-        const numberOfTransactions = product.quantity;
-        for (let i = 0; i < numberOfTransactions; i++) {
-          const transaction = {
-            userId: userId,
-            bikeId: product.bikeId,
-          };
-          try {
-            await axios.post(
-              "https://localhost:8443/addTransaction",
-              transaction
-            );
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      }
+      const userId = user.userId;
+      const products = this.cart;
 
       try {
-        const email = JSON.parse(localStorage.getItem("user")).email;
+        // Add transactions
+        for (const product of products) {
+          for (let i = 0; i < product.quantity; i++) {
+            await axios.post("https://localhost:8443/addTransaction", {
+              userId: userId,
+              bikeId: product.bikeId,
+            });
+          }
+        }
+
+        // Update user balance
         const response = await axios.get(
-          `https://localhost:8443/user/email/${email}`
+          `https://localhost:8443/user/email/${user.email}`
         );
-        const user = response.data;
-        user.balance = (
-          parseFloat(user.balance) - parseFloat(totalPrice)
+        const updatedUser = response.data;
+        updatedUser.balance = (
+          parseFloat(updatedUser.balance) - parseFloat(this.totalPrice)
         ).toFixed(2);
 
-        await axios.put("https://localhost:8443/update", user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
+        await axios.put("https://localhost:8443/update", updatedUser, {
+          headers: { "Content-Type": "application/json" },
         });
 
-        this.$store.commit("updateBalance", user.balance);
-        localStorage.setItem("user", JSON.stringify(user));
+        this.$store.commit("updateBalance", updatedUser.balance);
+        localStorage.setItem("user", JSON.stringify(updatedUser));
         window.dispatchEvent(new Event("balance-updated"));
         this.clearCart();
       } catch (error) {
-        console.error(error);
+        console.error("Transaction or balance update failed:", error);
       }
-    },
-    async updateUserInBackend(user) {
-      try {
-        await axios.put("https://localhost:8443/update", user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        this.$store.commit("updateBalance", user.balance);
-        localStorage.setItem("user", JSON.stringify(user));
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
-  created: {
-    clearCart() {
-      this.$store.commit("emptyCart");
     },
   },
 };
