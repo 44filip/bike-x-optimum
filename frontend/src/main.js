@@ -8,7 +8,7 @@ import Login from "./components/pages/Login.vue";
 import Register from "./components/pages/Register.vue";
 import Shop from "./components/pages/Shop.vue";
 import store from "./store";
-import RegisterdLogin from "./components/pages/RegisterdLogin.vue";
+import RegisteredLogin from "./components/pages/RegisteredLogin.vue";
 import RoleDirective from "./directives/roleDirectives";
 import Topup from "./components/pages/Topup.vue";
 import Account from "./components/pages/Account.vue";
@@ -24,7 +24,7 @@ var routes = [
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   { path: "/shop", component: Shop },
-  { path: "/registerdLogin", component: RegisterdLogin },
+  { path: "/registeredLogin", component: RegisteredLogin },
   { path: "/topup", component: Topup },
   { path: "/account", component: Account },
   { path: "/admin", component: Admin },

@@ -75,7 +75,7 @@ export default {
           role: "user",
         };
         await axios.post("https://localhost:8443/addUser", user);
-        this.$router.push("/registerdLogin");
+        this.$router.push("/registeredLogin");
       } catch (error) {
         this.$refs.popup.showPopup("Account with this e-mail already exists.");
       }
