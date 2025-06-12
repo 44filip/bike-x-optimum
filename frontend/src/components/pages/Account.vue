@@ -5,6 +5,15 @@
     <form @submit.prevent="changePassword" class="login-form">
       <div class="forma">
         <input
+          v-model="currentPassword"
+          id="current-password"
+          class="lf--input form-control"
+          placeholder="Your current password"
+          type="password"
+        />
+      </div>
+      <div class="forma">
+        <input
           v-model="password"
           id="password"
           class="lf--input form-control"
@@ -41,12 +50,11 @@ import PopupError from "./PopupError.vue";
 
 export default {
   name: "AccountComponent",
-  components: {
-    PopupError,
-  },
+  components: { PopupError },
   data() {
     const user = JSON.parse(localStorage.getItem("user"));
     return {
+      currentPassword: "",
       password: "",
       userId: user.userId,
       email: user.email,
@@ -59,39 +67,53 @@ export default {
           !confirm(
             "Are you sure you want to delete your account? This action cannot be undone."
           )
-        ) {
+        )
           return;
-        }
+
         await axios.delete(`https://localhost:8443/delete/id/${this.userId}`);
         this.$emit("logout");
       } catch (error) {
         console.error(error);
       }
     },
+
     async changePassword() {
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+      if (!this.currentPassword.trim()) {
+        this.$refs.errorPopup.showPopup("Please enter your current password.");
+        return;
+      }
+
       if (!passwordRegex.test(this.password.trim())) {
         this.$refs.errorPopup.showPopup(
-          "Password must be at least 8 characters, using letters and numbers."
+          "New password must be at least 8 characters, using letters and numbers."
         );
         return;
       }
+
       try {
-        const newHashedPassword = CryptoJS.SHA256(
-          this.password.trim()
+        const currentHashed = CryptoJS.SHA256(
+          this.currentPassword.trim()
         ).toString();
 
-        const checkResponse = await axios.post(
+        const currentCheck = await axios.post(
           "https://localhost:8443/check-password",
           {
             email: this.email,
-            password: newHashedPassword,
+            password: currentHashed,
           }
         );
+        if (!currentCheck.data) {
+          this.$refs.errorPopup.showPopup("Current password is incorrect.");
+          return;
+        }
 
-        if (checkResponse.data === true) {
+        const newHashed = CryptoJS.SHA256(this.password.trim()).toString();
+
+        if (newHashed === currentHashed) {
           this.$refs.errorPopup.showPopup(
-            "New password cannot be the same as the current password."
+            "New password cannot be the same as current password."
           );
           return;
         }
@@ -100,7 +122,7 @@ export default {
           `https://localhost:8443/user/email/${this.email}`
         );
         let user = userResponse.data;
-        user.password = newHashedPassword;
+        user.password = newHashed;
 
         await axios.put("https://localhost:8443/update", user, {
           headers: { "Content-Type": "application/json" },
