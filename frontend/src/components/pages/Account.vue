@@ -53,7 +53,11 @@ export default {
   methods: {
     async deleteAccount() {
       try {
-        if (!confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+        if (
+          !confirm(
+            "Are you sure you want to delete your account? This action cannot be undone."
+          )
+        ) {
           return;
         }
         await axios.delete(`https://localhost:8443/delete/id/${this.userId}`);
@@ -73,7 +77,9 @@ export default {
       try {
         const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
         let email = JSON.parse(localStorage.getItem("user")).email;
-        const response = await axios.get(`https://localhost:8443/user/email/${email}`);
+        const response = await axios.get(
+          `https://localhost:8443/user/email/${email}`
+        );
         let user = response.data;
         user.password = hashedPassword;
         await axios.put("https://localhost:8443/update", user, {
@@ -89,3 +95,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+input.form-control:focus {
+  border-color: #80bdff !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+  outline: none !important;
+}
+</style>
