@@ -30,15 +30,20 @@
         />
       </div>
     </form>
+    <PopupError ref="errorPopup" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import CryptoJS from "crypto-js";
+import PopupError from "./PopupError.vue";
 
 export default {
   name: "AccountComponent",
+  components: {
+    PopupError,
+  },
   data() {
     return {
       password: "",
@@ -48,19 +53,27 @@ export default {
   methods: {
     async deleteAccount() {
       try {
+        if (!confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+          return;
+        }
         await axios.delete(`https://localhost:8443/delete/id/${this.userId}`);
-        this.$emit("logout"); // emit logout to App.vue
+        this.$emit("logout");
       } catch (error) {
         console.error(error);
       }
     },
     async changePassword() {
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      if (!passwordRegex.test(this.password.trim())) {
+        this.$refs.errorPopup.showPopup(
+          "Password must be at least 8 characters, with letters and numbers."
+        );
+        return;
+      }
       try {
         const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
         let email = JSON.parse(localStorage.getItem("user")).email;
-        const response = await axios.get(
-          `https://localhost:8443/user/email/${email}`
-        );
+        const response = await axios.get(`https://localhost:8443/user/email/${email}`);
         let user = response.data;
         user.password = hashedPassword;
         await axios.put("https://localhost:8443/update", user, {
@@ -68,7 +81,7 @@ export default {
             "Content-Type": "application/json",
           },
         });
-        this.$emit("logout"); // emit logout to App.vue after password change
+        this.$emit("logout");
       } catch (error) {
         console.error(error);
       }
