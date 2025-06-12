@@ -63,7 +63,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest) {
         String email = loginRequest.get("email");
-        String hashedPassword = loginRequest.get("password"); // Already hashed from frontend
+        String hashedPassword = loginRequest.get("password");
         User user = service.getUserByEmail(email);
 
         if (user == null || !user.getPassword().equals(hashedPassword)) {
@@ -75,9 +75,21 @@ public class UserController {
 
         user.setToken(accessToken);
         user.setRefreshToken(refreshToken);
-        user.setPassword(null); // Don’t expose password
+        user.setPassword(null);
 
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/check-password")
+    public ResponseEntity<Boolean> checkPassword(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+        String password = payload.get("password");
+
+        User user = service.getUserByEmail(email);
+        if (user == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+
+        boolean matches = user.getPassword().equals(password);
+        return ResponseEntity.ok(matches);
     }
 
     @PostMapping("/refresh")

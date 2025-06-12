@@ -45,9 +45,11 @@ export default {
     PopupError,
   },
   data() {
+    const user = JSON.parse(localStorage.getItem("user"));
     return {
       password: "",
-      userId: JSON.parse(localStorage.getItem("user")).userId,
+      userId: user.userId,
+      email: user.email,
     };
   },
   methods: {
@@ -75,18 +77,35 @@ export default {
         return;
       }
       try {
-        const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
-        let email = JSON.parse(localStorage.getItem("user")).email;
-        const response = await axios.get(
-          `https://localhost:8443/user/email/${email}`
+        const newHashedPassword = CryptoJS.SHA256(
+          this.password.trim()
+        ).toString();
+
+        const checkResponse = await axios.post(
+          "https://localhost:8443/check-password",
+          {
+            email: this.email,
+            password: newHashedPassword,
+          }
         );
-        let user = response.data;
-        user.password = hashedPassword;
+
+        if (checkResponse.data === true) {
+          this.$refs.errorPopup.showPopup(
+            "New password cannot be the same as the current password."
+          );
+          return;
+        }
+
+        const userResponse = await axios.get(
+          `https://localhost:8443/user/email/${this.email}`
+        );
+        let user = userResponse.data;
+        user.password = newHashedPassword;
+
         await axios.put("https://localhost:8443/update", user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         });
+
         this.$emit("logout");
       } catch (error) {
         console.error(error);
@@ -95,6 +114,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 input.form-control:focus {
   border-color: #80bdff !important;

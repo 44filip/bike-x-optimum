@@ -25,9 +25,9 @@ public class User {
 
     @Transient
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String token; // transient field for JWT access token
+    private String token;
 
     @Transient
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String refreshToken; // transient field for JWT refresh token
+    private String refreshToken;
 }
