@@ -31,6 +31,15 @@
     </form>
     <p>If you wish to terminate your account press here:</p>
     <form @submit.prevent="deleteAccount" class="login-form">
+      <div class="forma">
+        <input
+          v-model="currentPasswordForDelete"
+          id="current-password-delete"
+          class="lf--input form-control"
+          placeholder="Your current password"
+          type="password"
+        />
+      </div>
       <div class="forma delacc">
         <input
           class="lf--submit form-control"
@@ -55,6 +64,7 @@ export default {
     const user = JSON.parse(localStorage.getItem("user"));
     return {
       currentPassword: "",
+      currentPasswordForDelete: "",
       password: "",
       userId: user.userId,
       email: user.email,
@@ -62,7 +72,30 @@ export default {
   },
   methods: {
     async deleteAccount() {
+      if (!this.currentPasswordForDelete.trim()) {
+        this.$refs.errorPopup.showPopup(
+          "Please enter your current password to delete your account."
+        );
+        return;
+      }
       try {
+        const currentHashed = CryptoJS.SHA256(
+          this.currentPasswordForDelete.trim()
+        ).toString();
+
+        const currentCheck = await axios.post(
+          "https://localhost:8443/check-password",
+          {
+            email: this.email,
+            password: currentHashed,
+          }
+        );
+
+        if (!currentCheck.data) {
+          this.$refs.errorPopup.showPopup("Current password is incorrect.");
+          return;
+        }
+
         if (
           !confirm(
             "Are you sure you want to delete your account? This action cannot be undone."
@@ -78,17 +111,8 @@ export default {
     },
 
     async changePassword() {
-      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
       if (!this.currentPassword.trim()) {
         this.$refs.errorPopup.showPopup("Please enter your current password.");
-        return;
-      }
-
-      if (!passwordRegex.test(this.password.trim())) {
-        this.$refs.errorPopup.showPopup(
-          "New password must be at least 8 characters, using letters and numbers."
-        );
         return;
       }
 
@@ -104,8 +128,22 @@ export default {
             password: currentHashed,
           }
         );
+
         if (!currentCheck.data) {
           this.$refs.errorPopup.showPopup("Current password is incorrect.");
+          return;
+        }
+
+        if (!this.password.trim()) {
+          this.$refs.errorPopup.showPopup("Please enter a new password.");
+          return;
+        }
+
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        if (!passwordRegex.test(this.password.trim())) {
+          this.$refs.errorPopup.showPopup(
+            "New password must be at least 8 characters, using letters and numbers."
+          );
           return;
         }
 
