@@ -29,7 +29,9 @@ system to system).
 # Browser
 Navigate to **https://localhost:8080** in the address bar. \
 Using **https** may trigger a security warning due to the certificate in place. \
-If you're having login issues, navigate to https://localhost:8443/login and accept the security risk.
+If you're having login issues, navigate to https://localhost:8443/login and accept the security risk. \
+For testing purposes, JWT token expiry will automatically log the user out after thirty seconds. \
+You may change REFRESH_TOKEN_VALIDITY in “.\backend\src\main\java\rs\ac\singidunum\backend\util\JwtUtil.java”
 # Success
 ![bikes](https://github.com/user-attachments/assets/e7723d77-5b82-4664-aff8-56939c7916c1)
 
