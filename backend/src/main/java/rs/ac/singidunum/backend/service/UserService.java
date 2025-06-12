@@ -40,7 +40,9 @@ public class UserService {
         existingUser.setEmail(user.getEmail());
         existingUser.setRole(user.getRole());
         existingUser.setBalance(user.getBalance());
-        existingUser.setPassword(user.getPassword());
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            existingUser.setPassword(user.getPassword());
+        }
         return repository.save(existingUser);
     }
 
