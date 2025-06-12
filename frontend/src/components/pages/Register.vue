@@ -53,6 +53,19 @@ export default {
   },
   methods: {
     async performRegister() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+      if (!emailRegex.test(this.email.trim())) {
+      this.$refs.popup.showPopup("Invalid e-mail format.");
+      return;
+      }
+
+      if (!passwordRegex.test(this.password.trim())) {
+      this.$refs.popup.showPopup("Password must be at least 8 characters, with letters and numbers.");
+      return;
+      }
+
       try {
         const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
         const user = {
@@ -64,7 +77,7 @@ export default {
         await axios.post("https://localhost:8443/addUser", user);
         this.$router.push("/registerdLogin");
       } catch (error) {
-        this.$refs.popup.showPopup("Account with this email already exists!");
+        this.$refs.popup.showPopup("Account with this e-mail already exists.");
       }
     },
   },
