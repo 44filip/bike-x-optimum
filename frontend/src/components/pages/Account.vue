@@ -72,7 +72,7 @@ export default {
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
       if (!passwordRegex.test(this.password.trim())) {
         this.$refs.errorPopup.showPopup(
-          "Password must be at least 8 characters, with letters and numbers."
+          "Password must be at least 8 characters, using letters and numbers."
         );
         return;
       }

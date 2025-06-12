@@ -62,7 +62,7 @@ export default {
       }
 
       if (!passwordRegex.test(this.password.trim())) {
-      this.$refs.popup.showPopup("Password must be at least 8 characters, with letters and numbers.");
+      this.$refs.popup.showPopup("Password must be at least 8 characters, using letters and numbers.");
       return;
       }
 
