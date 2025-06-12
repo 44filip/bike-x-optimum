@@ -21,37 +21,49 @@
         </div>
       </form>
     </div>
-    <TopUpAdded class="TopUpAdded" ref="TopUpAdded"></TopUpAdded>
+    <PopupError ref="popup" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import TopUpAdded from "./TopUpAdded.vue";
+import PopupError from "./PopupError.vue";
 
 export default {
   name: "TopupComponent",
+  components: { PopupError },
   data() {
     return {
       balance: "",
     };
   },
-  components: {
-    TopUpAdded,
-  },
   methods: {
     async addToBalance() {
-      let email = JSON.parse(localStorage.getItem("user"));
-      let userEmail = email.email;
-      const response = await axios.get(
-        `https://localhost:8443/user/email/${userEmail}`
-      );
-      let user = response.data;
-      user.balance = (
-        parseFloat(user.balance) + parseFloat(this.balance)
-      ).toFixed(2);
+      const amount = parseFloat(this.balance);
+      if (isNaN(amount) || amount <= 0) {
+        this.$refs.popup.showPopup("Please enter a valid positive amount.");
+        return;
+      }
 
-      await this.updateUserInBackend(user);
+      try {
+        const userData = JSON.parse(localStorage.getItem("user"));
+        if (!userData || !userData.email) {
+          this.$refs.popup.showPopup("User not logged in.");
+          return;
+        }
+
+        const response = await axios.get(
+          `https://localhost:8443/user/email/${userData.email}`
+        );
+        const user = response.data;
+
+        user.balance = (parseFloat(user.balance) + amount).toFixed(2);
+
+        await this.updateUserInBackend(user);
+      } catch (error) {
+        console.error(error);
+        this.$refs.popup.showPopup("Failed to add balance. Please try again.");
+      }
     },
     async updateUserInBackend(user) {
       try {
@@ -63,9 +75,10 @@ export default {
 
         localStorage.setItem("user", JSON.stringify(user));
         window.dispatchEvent(new Event("balance-updated"));
-        this.$refs.TopUpAdded.showPopup();
+        this.$refs.popup.showPopup("Balance added successfully!");
       } catch (error) {
         console.error(error);
+        this.$refs.popup.showPopup("Failed to update balance.");
       }
     },
   },

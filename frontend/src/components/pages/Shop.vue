@@ -91,14 +91,17 @@
         </div>
       </div>
     </div>
+    <PopupError ref="popup" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import PopupError from "./PopupError.vue";
 
 export default {
   name: "ShopComponent",
+  components: { PopupError },
   computed: {
     cart() {
       return this.$store.state.cart;
@@ -127,25 +130,34 @@ export default {
       const user = JSON.parse(localStorage.getItem("user"));
       if (!user) return;
 
-      const userId = user.userId;
-      const products = this.cart;
-
       try {
+        // Fetch fresh user data for balance check
+        const response = await axios.get(
+          `https://localhost:8443/user/email/${user.email}`
+        );
+        const updatedUser = response.data;
+
+        if (parseFloat(updatedUser.balance) < this.totalPrice) {
+          this.$refs.popup.showPopup(
+            "Insufficient balance. Please top up your account."
+          );
+          return;
+        }
+
+        const userId = user.userId;
+        const products = this.cart;
+
         // Add transactions
         for (const product of products) {
           for (let i = 0; i < product.quantity; i++) {
             await axios.post("https://localhost:8443/addTransaction", {
-              userId: userId,
+              userId,
               bikeId: product.bikeId,
             });
           }
         }
 
         // Update user balance
-        const response = await axios.get(
-          `https://localhost:8443/user/email/${user.email}`
-        );
-        const updatedUser = response.data;
         updatedUser.balance = (
           parseFloat(updatedUser.balance) - parseFloat(this.totalPrice)
         ).toFixed(2);
@@ -160,6 +172,7 @@ export default {
         this.clearCart();
       } catch (error) {
         console.error("Transaction or balance update failed:", error);
+        this.$refs.popup.showPopup("Transaction failed. Please try again.");
       }
     },
   },
