@@ -64,31 +64,24 @@ export default {
   methods: {
     async performLogin() {
       try {
-        const response = await axios.get(
-          `https://localhost:8443/user/email/${this.username}`
-        );
-        const user = response.data;
         const hashedPassword = CryptoJS.SHA256(this.password.trim()).toString();
+        const response = await axios.post("https://localhost:8443/login", {
+          email: this.username,
+          password: hashedPassword,
+        });
 
-        if (user && user.password.toString() === hashedPassword) {
-          localStorage.setItem("user", JSON.stringify(user));
-          this.$store.commit("setUser", user);
+        const user = response.data;
+        localStorage.setItem("user", JSON.stringify(user));
+        this.$store.commit("setUser", user);
 
-          if (user.token && user.token.length > 0) {
-            localStorage.setItem("jwtToken", user.token);
-          }
+        if (user.token) localStorage.setItem("jwtToken", user.token);
+        if (user.refreshToken)
+          localStorage.setItem("refreshToken", user.refreshToken);
 
-          if (user.refreshToken && user.refreshToken.length > 0) {
-            localStorage.setItem("refreshToken", user.refreshToken);
-          }
-
-          this.$router.push("/");
-          window.location.reload();
-        } else {
-          this.$refs.errorPopup.showPopup("Invalid email or password.");
-        }
+        this.$router.push("/");
+        window.location.reload();
       } catch (error) {
-        this.$refs.errorPopup.showPopup("An error occurred during login.");
+        this.$refs.errorPopup.showPopup("Invalid email or password.");
         console.error(error);
       }
     },

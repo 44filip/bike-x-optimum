@@ -60,6 +60,26 @@ public class UserController {
         return service.deleteUser(id);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest) {
+        String email = loginRequest.get("email");
+        String hashedPassword = loginRequest.get("password"); // Already hashed from frontend
+        User user = service.getUserByEmail(email);
+
+        if (user == null || !user.getPassword().equals(hashedPassword)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        }
+
+        String accessToken = jwtUtil.generateAccessToken(user.getEmail());
+        String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
+
+        user.setToken(accessToken);
+        user.setRefreshToken(refreshToken);
+        user.setPassword(null); // Don’t expose password
+
+        return ResponseEntity.ok(user);
+    }
+
     @PostMapping("/refresh")
     public ResponseEntity<?> refreshAccessToken(@RequestBody String refreshToken) {
         try {
