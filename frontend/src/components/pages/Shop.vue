@@ -131,7 +131,6 @@ export default {
       if (!user) return;
 
       try {
-        // Fetch fresh user data for balance check
         const response = await axios.get(
           `https://localhost:8443/user/email/${user.email}`
         );
@@ -147,7 +146,6 @@ export default {
         const userId = user.userId;
         const products = this.cart;
 
-        // Add transactions
         for (const product of products) {
           for (let i = 0; i < product.quantity; i++) {
             await axios.post("https://localhost:8443/addTransaction", {
@@ -157,7 +155,6 @@ export default {
           }
         }
 
-        // Update user balance
         updatedUser.balance = (
           parseFloat(updatedUser.balance) - parseFloat(this.totalPrice)
         ).toFixed(2);

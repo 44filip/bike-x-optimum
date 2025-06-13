@@ -87,7 +87,7 @@ export default {
 <style scoped>
 input.form-control:focus {
   border-color: #80bdff !important;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
   outline: none !important;
 }
 </style>

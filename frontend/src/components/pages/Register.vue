@@ -22,7 +22,11 @@
           />
         </div>
         <div class="forma">
-          <input class="lf--submit form-control" type="submit" value="REGISTER" />
+          <input
+            class="lf--submit form-control"
+            type="submit"
+            value="REGISTER"
+          />
         </div>
       </form>
       <a class="lf--forgot">
@@ -57,13 +61,15 @@ export default {
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
       if (!emailRegex.test(this.email.trim())) {
-      this.$refs.popup.showPopup("Invalid e-mail format.");
-      return;
+        this.$refs.popup.showPopup("Invalid e-mail format.");
+        return;
       }
 
       if (!passwordRegex.test(this.password.trim())) {
-      this.$refs.popup.showPopup("Password must be at least 8 characters, using letters and numbers.");
-      return;
+        this.$refs.popup.showPopup(
+          "Password must be at least 8 characters, using letters and numbers."
+        );
+        return;
       }
 
       try {
@@ -86,7 +92,7 @@ export default {
 <style scoped>
 input.form-control:focus {
   border-color: #80bdff !important;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
   outline: none !important;
 }
 </style>

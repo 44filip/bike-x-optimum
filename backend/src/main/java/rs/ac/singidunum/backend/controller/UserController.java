@@ -86,7 +86,8 @@ public class UserController {
         String password = payload.get("password");
 
         User user = service.getUserByEmail(email);
-        if (user == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
+        if (user == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
 
         boolean matches = user.getPassword().equals(password);
         return ResponseEntity.ok(matches);
